@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context="ellere.cooksmart.HomePage">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linearLayout">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
+
+</LinearLayout>
+    <TextView
+        android:id="@+id/Select_category_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:text="@string/select_category"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryLight"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarButtonStyle">
+        <Button
+            android:id="@+id/breakfast_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/breakfast"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"/>
+        <Button
+            android:id="@+id/snacks_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/snack"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarButtonStyle">
+        <Button
+            android:id="@+id/dinner_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/dinner"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+        <Button
+            android:id="@+id/dessert_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/desert"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="?android:attr/buttonBarButtonStyle"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/drinks_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/drinks"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"/>
+        <Button
+            android:id="@+id/curry_btn"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/curry"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

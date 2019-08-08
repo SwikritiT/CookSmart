@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CookSmart</string>
+    <string name="select_category">Select the desired category</string>
+    <string name="setting">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log Out</string>
+    <string name="help">Help</string>
+    <string name="snack">Snack</string>
+    <string name="dinner">Dinner</string>
+    <string name="curry">Curry</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="drinks">Drinks</string>
+    <string name="desert">Dessert</string>
+
+</resources>

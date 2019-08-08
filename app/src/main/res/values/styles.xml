@@ -1,0 +1,29 @@
+<resources>
+
+
+        <!-- Base application theme. -->
+        <style name="AppMaterialTheme" parent="SuperMaterialTheme">
+            <!-- Customize your theme here. -->
+        </style>
+
+
+        <style name="SuperMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
+            <!-- For pre-lollipop, lollipop and above devices. -->
+            <item name="colorPrimary">@color/colorPrimary</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+            <item name="colorAccent">@color/colorAccent</item>
+            <item name="colorControlHighlight">@color/colorAccent</item>
+
+        </style>
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+
+        <item name="android:textColorPrimary">@android:color/white</item>  <!-- Text color of Toolbar Title -->
+        <item name="android:textColorSecondary">@android:color/white</item><!-- Color of Overflow Menu ( 3 dots icon )
+                                                                                    and color of Navigation Drawer Icon-->
+    </style>
+    <style name="OverflowTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/overflowMenuBg</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+
+</resources>
