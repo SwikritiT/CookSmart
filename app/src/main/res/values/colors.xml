@@ -9,4 +9,9 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="overflowMenuBg">#F5F5F5</color>
+    <color name="categories_title">#4c4c4c</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="ghostwhite">#F8F8FF</color>
+    <!--#9c27b0,#6d1b7b-->
+    <!--#E6E6FA,#D8BFD8-->
 </resources>
