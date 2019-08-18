@@ -43,6 +43,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                     }
                 }
             });
+            thumbnail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
+                    if(clicklistener !=null){
+                        clicklistener.thumbnailClicked(v,getAdapterPosition());
+                    }
+                }
+            });
         }
     }
     public void setClickListener(ClickListener clickListener){

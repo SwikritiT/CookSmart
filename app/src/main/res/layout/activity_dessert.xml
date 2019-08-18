@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context="ellere.cooksmart.Dessert">
     <include
+        android:id="@+id/dessert_toolbar"
         layout="@layout/toolbar"/>
 
 </LinearLayout>
