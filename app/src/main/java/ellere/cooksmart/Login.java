@@ -30,7 +30,6 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 
 public class Login extends AppCompatActivity {
      Button loginbtn, gosignupbtn;
-    TextView textView1;
     EditText user, pass;
     String reg_url = BASE_URL+"login.php";
 
@@ -41,8 +40,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         gosignupbtn=(Button) findViewById(R.id.gotosignup_btn);
         loginbtn=(Button) findViewById(R.id.login_btn);
-        user=(EditText) findViewById(R.id.username);
-        pass=(EditText) findViewById(R.id.password);
+        user=(EditText) findViewById(R.id.username_login);
+        pass=(EditText) findViewById(R.id.password_login);
         loginbtn.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
@@ -83,7 +82,7 @@ public class Login extends AppCompatActivity {
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")){
 
-                                    Log.d("test",">>>>1"+textView1.getText());
+                                    //Log.d("test",">>>>1"+textView1.getText());
                                     Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
                                     //if(pref.contains("username")&& pref.contains("password"))
 
