@@ -21,8 +21,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/categories_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
                 android:scaleType="fitXY"
+                android:clickable="true"
+                android:onClick="animateIntent"
+                android:transitionName="@string/transition_string"
+
                 />
             <TextView
                 android:id="@+id/category_name"
@@ -33,7 +36,8 @@
                 android:paddingRight="@dimen/categories_title_padding"
                 android:paddingTop="@dimen/categories_title_padding"
                 android:textColor="@color/categories_title"
-                android:textSize="@dimen/categories_title"/>
+                android:textSize="@dimen/categories_title"
+                />
 
         </RelativeLayout>
 

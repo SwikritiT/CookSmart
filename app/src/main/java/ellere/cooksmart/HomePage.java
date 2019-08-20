@@ -6,6 +6,8 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -35,7 +37,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         toolbar=(Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
 
 
@@ -129,7 +131,62 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     public void itemClicked(View view, int position) {
         if(position==0){
             Intent intent = new Intent(HomePage.this, Breakfast.class);
+            String transitionName = getString(R.string.transition_string);
+            View viewStart = findViewById(R.id.categories_thumbnail);
+
+            ActivityOptionsCompat options =
+
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                            viewStart,   // Starting view
+                            transitionName    // The String
+                    );
             intent.putExtra("ItemPosition", position);
+           // startActivity(intent);
+             ActivityCompat.startActivity(this, intent, options.toBundle());
+        }
+        if(position==1){
+            Intent intent = new Intent(HomePage.this, Snacks.class);
+            intent.putExtra("ItemPosition", position);
+            startActivity(intent);
+        }
+        if(position==2){
+            Intent intent = new Intent(HomePage.this, Dinner.class);
+            intent.putExtra("ItemPosition", position);
+            startActivity(intent);
+        }
+        if(position==3){
+            Intent intent = new Intent(HomePage.this, Curry.class);
+            intent.putExtra("ItemPosition", position);
+            startActivity(intent);
+        }
+        if(position==4){
+            Intent intent = new Intent(HomePage.this, Dessert.class);
+            intent.putExtra("ItemPosition", position);
+            startActivity(intent);
+        }
+        if(position==5){
+            Intent intent = new Intent(HomePage.this, Drinks.class);
+            intent.putExtra("ItemPosition", position);
+            startActivity(intent);
+        }
+
+    }
+
+    @Override
+    public void thumbnailClicked(View view, int position) {
+        if(position==0){
+            Intent intent = new Intent(HomePage.this, Breakfast.class);
+//            String transitionName = getString(R.string.transition_string);
+//            View viewStart = findViewById(R.id.categories_thumbnail);
+//
+//            ActivityOptionsCompat options =
+//
+//                    ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+//                            viewStart,   // Starting view
+//                            transitionName    // The String
+//                    );
+                 intent.putExtra("ItemPosition", position);
+            //ActivityCompat.startActivity(this, intent, options.toBundle());
             startActivity(intent);
         }
         if(position==1){
@@ -157,6 +214,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("ItemPosition", position);
             startActivity(intent);
         }
+
 
     }
 

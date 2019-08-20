@@ -4,8 +4,28 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:transitionName="@string/transition_string"
     tools:context="ellere.cooksmart.Breakfast">
     <include
         layout="@layout/toolbar"/>
+
+    <!--SearchView
+        android:id="@+id/searchBreakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Select ingredients from the list"
+        android:background="@color/ghostwhite"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp">
+
+        <requestFocus />
+    </SearchView-->
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Select your ingredients"/>
+
 
 </LinearLayout>

@@ -12,7 +12,8 @@
     <string name="drinks">Drinks</string>
     <string name="desert">Dessert</string>
     <string name="backdrop_title">COOKSMART</string>
-    <string name="backdrop_subtitle">SELECT CATAGEORY</string>
+    <string name="backdrop_subtitle">SELECT CATEGORY</string>
+    <string name="transition_string">hello</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 
 </resources>
