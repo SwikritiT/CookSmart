@@ -4,25 +4,30 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +36,11 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     private RecyclerView recyclerView;
     private CategoriesAdapter categoriesAdapter;
     private List<CategoriesModel> categoriesModelList;
+   //private static final String EXTRA__ITEM = "image_url";
+//    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME = "image_transition_name";
+//    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME2 = "image_transition_name2";
+//    private static final String EXTRA__ITEM_NAME = "name";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +65,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
         categoriesModelList=new ArrayList<>();
-        categoriesAdapter= new CategoriesAdapter(this,categoriesModelList);
+        categoriesAdapter= new CategoriesAdapter(getApplicationContext(), categoriesModelList, this);;
         categoriesAdapter.setClickListener(this);
         RecyclerView.LayoutManager mlayoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(mlayoutManager);
@@ -69,6 +79,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
     }
     /*initializing collapsing toolbar
@@ -127,94 +138,259 @@ public class HomePage extends AppCompatActivity implements ClickListener {
         categoriesAdapter.notifyDataSetChanged();
     }
 
-    @Override
+
+//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+//    @Override
+//    public void itemClicked(int position, ImageView imageView, TextView textView) {
+//        if(position==0){
+//            Intent intent = new Intent(HomePage.this, Breakfast.class);
+//            intent.putExtra("ItemPosition", position);
+//            startActivity(intent);
+////            intent.putExtra(EXTRA__ITEM,imageItem);
+////            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+////                intent.putExtra("BreakfastTransitionName", ViewCompat.getTransitionName(shareImageView));
+//////            Pair<View, String> mPair1 = new Pair<View, String>(shareImageView, ViewCompat.getTransitionName(shareImageView));
+//////            Pair<View, String> mPair2 = new Pair<View, String>(shareTextView, ViewCompat.getTransitionName(shareTextView));
+//////            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,mPair1,mPair2);
+////
+////
+////                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+////                        this,
+////                        shareImageView,
+////                        ViewCompat.getTransitionName(shareImageView));
+////                startActivity(intent, options.toBundle());
+////            }
+//
+//
+//
+//
+//
+//
+//
+//
+//        }
+//        if(position==1){
+//            Intent intent = new Intent(HomePage.this, Snacks.class);
+//            intent.putExtra("ItemPosition", position);
+//            startActivity(intent);
+//        }
+//        if(position==2){
+//            Intent intent = new Intent(HomePage.this, Dinner.class);
+//            intent.putExtra("ItemPosition", position);
+//            startActivity(intent);
+//        }
+//        if(position==3){
+//            Intent intent = new Intent(HomePage.this, Curry.class);
+//            intent.putExtra("ItemPosition", position);
+//            startActivity(intent);
+//        }
+//        if(position==4){
+//            Intent intent = new Intent(HomePage.this, Dessert.class);
+//            intent.putExtra("ItemPosition", position);
+//            startActivity(intent);
+//        }
+//        if(position==5){
+//            Intent intent = new Intent(HomePage.this, Drinks.class);
+//            intent.putExtra("ItemPosition", position);
+//            startActivity(intent);
+//        }
+//
+//    }
+
+//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+//    @Override
     public void itemClicked(View view, int position) {
         if(position==0){
             Intent intent = new Intent(HomePage.this, Breakfast.class);
-            String transitionName = getString(R.string.transition_string);
-            View viewStart = findViewById(R.id.categories_thumbnail);
-
-            ActivityOptionsCompat options =
-
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-                            viewStart,   // Starting view
-                            transitionName    // The String
-                    );
             intent.putExtra("ItemPosition", position);
-           // startActivity(intent);
-             ActivityCompat.startActivity(this, intent, options.toBundle());
+            intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==1){
             Intent intent = new Intent(HomePage.this, Snacks.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==2){
             Intent intent = new Intent(HomePage.this, Dinner.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==3){
             Intent intent = new Intent(HomePage.this, Curry.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==4){
             Intent intent = new Intent(HomePage.this, Dessert.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==5){
             Intent intent = new Intent(HomePage.this, Drinks.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
 
-    }
 
+    }
+//
     @Override
     public void thumbnailClicked(View view, int position) {
         if(position==0){
             Intent intent = new Intent(HomePage.this, Breakfast.class);
-//            String transitionName = getString(R.string.transition_string);
-//            View viewStart = findViewById(R.id.categories_thumbnail);
-//
-//            ActivityOptionsCompat options =
-//
-//                    ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-//                            viewStart,   // Starting view
-//                            transitionName    // The String
-//                    );
-                 intent.putExtra("ItemPosition", position);
-            //ActivityCompat.startActivity(this, intent, options.toBundle());
-            startActivity(intent);
+            intent.putExtra("ItemPosition", position);
+            intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+           else startActivity(intent);
         }
         if(position==1){
             Intent intent = new Intent(HomePage.this, Snacks.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==2){
             Intent intent = new Intent(HomePage.this, Dinner.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==3){
             Intent intent = new Intent(HomePage.this, Curry.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==4){
             Intent intent = new Intent(HomePage.this, Dessert.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
+            intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
+
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
         }
         if(position==5){
             Intent intent = new Intent(HomePage.this, Drinks.class);
             intent.putExtra("ItemPosition", position);
-            startActivity(intent);
-        }
+            intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    view,
+                    ViewCompat.getTransitionName(view));
 
+
+                startActivity(intent, options.toBundle());
+            }
+            else startActivity(intent);
+        }
 
     }
 

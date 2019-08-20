@@ -1,10 +1,16 @@
 package ellere.cooksmart;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+
 /**
  * Created by swikriti on 8/14/2019.
  */
 
-public class CategoriesModel {
+public class CategoriesModel implements Serializable {
     private String name;
     private int thumbnail;
     public CategoriesModel(){}
@@ -24,5 +30,7 @@ public class CategoriesModel {
     public void setThumbnail(int thumbnail){
         this.thumbnail=thumbnail;
     }
+
+
 }
 

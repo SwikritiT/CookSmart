@@ -9,7 +9,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
-        app:cardCornerRadius="0dp">
+        app:cardCornerRadius="0dp"
+
+        android:transitionName="@string/transition_string">
 
         <RelativeLayout
             android:id="@+id/relative_cardview"
@@ -21,11 +23,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/categories_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:scaleType="fitXY"
                 android:clickable="true"
-                android:onClick="animateIntent"
-                android:transitionName="@string/transition_string"
+                android:focusable="true"
 
+
+                android:scaleType="fitXY"
                 />
             <TextView
                 android:id="@+id/category_name"
@@ -36,8 +38,11 @@
                 android:paddingRight="@dimen/categories_title_padding"
                 android:paddingTop="@dimen/categories_title_padding"
                 android:textColor="@color/categories_title"
+
                 android:textSize="@dimen/categories_title"
-                />
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="animateIntent"/>
 
         </RelativeLayout>
 

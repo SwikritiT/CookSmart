@@ -5,12 +5,12 @@
     <string name="profile">Profile</string>
     <string name="logout">Log Out</string>
     <string name="help">Help</string>
-    <string name="snack">Snack</string>
+    <string name="snacks">Snacks</string>
     <string name="dinner">Dinner</string>
     <string name="curry">Curry</string>
     <string name="breakfast">Breakfast</string>
     <string name="drinks">Drinks</string>
-    <string name="desert">Dessert</string>
+    <string name="dessert">Dessert</string>
     <string name="backdrop_title">COOKSMART</string>
     <string name="backdrop_subtitle">SELECT CATEGORY</string>
     <string name="transition_string">hello</string>

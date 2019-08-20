@@ -1,6 +1,8 @@
 package ellere.cooksmart;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +25,7 @@ import ellere.cooksmart.R;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.MyViewHolder> {
     private Context mContext;
     private List<CategoriesModel> categoriesList;
-    private  ClickListener clicklistener = null;
+    private  ClickListener clickListener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder  {
         public TextView categoryName;
@@ -34,12 +36,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             categoryName=(TextView) view.findViewById(R.id.category_name);
             thumbnail=(ImageView) view.findViewById(R.id.categories_thumbnail);
             relativeLayout=(RelativeLayout)view.findViewById(R.id.relative_cardview);
-            relativeLayout.setOnClickListener(new View.OnClickListener() {
+
+            categoryName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
-                    if(clicklistener !=null){
-                        clicklistener.itemClicked(v,getAdapterPosition());
+                    if(clickListener !=null){
+                        clickListener.itemClicked(v,getAdapterPosition());
+                        //clickListener.itemClicked(getAdapterPosition(),thumbnail, categoryName);
                     }
                 }
             });
@@ -47,23 +51,23 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 @Override
                 public void onClick(View v) {
                     //Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
-                    if(clicklistener !=null){
-                        clicklistener.thumbnailClicked(v,getAdapterPosition());
+                    if(clickListener !=null){
+                        clickListener.thumbnailClicked(v,getAdapterPosition());
+                        //clickListener.itemClicked(getAdapterPosition(),thumbnail, categoryName);
                     }
                 }
             });
-        }
-    }
-    public void setClickListener(ClickListener clickListener){
-        this.clicklistener = clickListener;
+       }
     }
 
 
 
 
-    public CategoriesAdapter(Context mContext,List<CategoriesModel> categoriesList){
+    public CategoriesAdapter(Context mContext,List<CategoriesModel> categoriesList,ClickListener clickListener){
+
         this.mContext=mContext;
         this.categoriesList=categoriesList;
+        this.clickListener=clickListener;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -72,15 +76,32 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
-        CategoriesModel categoriesModel=categoriesList.get(position);
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+        final CategoriesModel categoriesModel=categoriesList.get(position);
         holder.categoryName.setText(categoriesModel.getName());
-        //loading album cover using glide library
+        /* loading album cover using glide library */
         Glide.with(mContext).load(categoriesModel.getThumbnail()).into(holder.thumbnail);
 
-    }
+       ViewCompat.setTransitionName(holder.thumbnail, categoriesModel.getName());
 
-    @Override
+      ViewCompat.setTransitionName(holder.categoryName, categoriesModel.getName());
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //clickListener.itemClicked(holder.getAdapterPosition(), categoriesModel, holder.thumbnail, holder.categoryName);
+//                clickListener.itemClicked(holder.getAdapterPosition(), holder.thumbnail, holder.categoryName);
+//            }
+//        });
+
+
+    }
+        public void setClickListener(ClickListener clickListener){
+            this.clickListener = clickListener;
+        }
+
+
+        @Override
     public int getItemCount() {
         return categoriesList.size();
     }
