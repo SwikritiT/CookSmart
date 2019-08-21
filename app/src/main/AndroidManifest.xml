@@ -23,7 +23,7 @@
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!--</intent-filter> -->
         </activity>
         <activity android:name=".Breakfast">
         <!--<intent-filter>-->
@@ -36,14 +36,20 @@
         <activity android:name=".Dinner" />
         <activity android:name=".Curry" />
         <activity android:name=".Dessert" />
-        <activity android:name=".Drinks" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".FirstPage">
+        <activity android:name=".Drinks" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".FirstPage">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".Login">
             <!--<intent-filter>-->
