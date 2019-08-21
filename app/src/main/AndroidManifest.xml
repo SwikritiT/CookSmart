@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ellere.cooksmart">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,18 +19,46 @@
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
         <activity android:name=".HomePage">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter> -->
+        </activity>
+        <activity android:name=".Breakfast">
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".Snacks" />
+        <activity android:name=".Dinner" />
+        <activity android:name=".Curry" />
+        <activity android:name=".Dessert" />
+        <activity android:name=".Drinks" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Breakfast"></activity>
-        <activity android:name=".Snacks"></activity>
-        <activity android:name=".Dinner"></activity>
-        <activity android:name=".Curry"></activity>
-        <activity android:name=".Dessert"></activity>
-        <activity android:name=".Drinks"></activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".FirstPage">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".Login">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
     </application>
 
 </manifest>
