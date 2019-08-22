@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drinks_linearlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/drinks_button"
+        app:layout_gravity="fill_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/grid_btn_bg"
+        android:fontFamily="sans-serif-small"
+        android:textSize="13sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:theme="@style/MyButton"
+
+        />
+
+</LinearLayout>
