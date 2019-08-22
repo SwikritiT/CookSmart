@@ -15,5 +15,26 @@
     <string name="backdrop_subtitle">SELECT CATEGORY</string>
     <string name="transition_string">hello</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
-
+    <string name="lemon">Lemon</string>
+    <string name="mint">Mint</string>
+    <string name="sugar">Sugar</string>
+    <string name="salt">Salt</string>
+    <string name="ice_cubes">Ice Cubes</string>
+    <string name="water">Water</string>
+    <string name="soda">Soda</string>
+    <string name="Black_salt">Black Salt</string>
+    <string name="sugarcane_juice">Sugarcane Juice</string>
+    <string name="Banana">Banana</string>
+    <string name="yoghurt">Yoghurt</string>
+    <string name="cashew_nut">Cashew Nut</string>
+    <string name="honey">Honey</string>
+    <string name="milk">Milk</string>
+    <string name="tea">tea</string>
+    <string name="coffee">Coffee</string>
+    <string name="ice_cream">Ice Cream</string>
+    <string name="chocolate_syrup">Chocolate Syrup</string>
+    <string name="mango">Mango</string>
+    <string name="coconut_milk">Coconut Milk</string>
+    <string name="coconut_water">Coconut Water</string>
+    <string name="black_pepper">Black Pepper</string>
 </resources>

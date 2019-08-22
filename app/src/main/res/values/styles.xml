@@ -16,6 +16,13 @@
 
 
         </style>
+    <style name="EdittextTheme" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/grey</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
+    <style name="MyButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
 
         <item name="android:textColorPrimary">@android:color/white</item>  <!-- Text color of Toolbar Title -->

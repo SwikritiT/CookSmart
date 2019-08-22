@@ -73,7 +73,7 @@
                     />
 
                 <EditText
-                    android:id="@+id/username"
+                    android:id="@+id/username_login"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:fontFamily="sans-serif-light"
@@ -102,7 +102,7 @@
                 />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/password_login"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
 
