@@ -9,9 +9,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
-        app:cardCornerRadius="0dp"
-
-        android:transitionName="@string/transition_string">
+        app:cardCornerRadius="0dp">
 
         <RelativeLayout
             android:id="@+id/relative_cardview"
@@ -42,7 +40,7 @@
                 android:textSize="@dimen/categories_title"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="animateIntent"/>
+               />
 
         </RelativeLayout>
 
