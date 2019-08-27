@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/viewBg"
-    tools:context="ellere.cooksmart.Drinks"
-    tools:showIn="@layout/activity_drinks">
+    tools:context="ellere.cooksmart.Curry"
+    tools:showIn="@layout/activity_curry">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/drinks_recycler_view"
+        android:id="@+id/curry_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

@@ -61,7 +61,7 @@
 
     </android.support.design.widget.AppBarLayout>
     <LinearLayout
-        android:id="@+id/breakfast_linearlayout"
+        android:id="@+id/drinks_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/viewBg"
