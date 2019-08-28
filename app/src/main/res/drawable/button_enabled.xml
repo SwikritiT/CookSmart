@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true"
-        android:state_focused="false"
-        android:state_enabled="true"
-        android:color="#ECD4EA">
+    <item android:state_enabled="true"
+        android:state_selected="true"
+        android:color="@color/lavender">
 
         <shape
             android:shape="rectangle"
             android:thickness="50dp"
-            android:visible="true" >
+            android:visible="true"
+            >
+            <solid android:color="@color/lightgray"/>
 
             <corners
                 android:bottomLeftRadius="20dp"
@@ -16,9 +17,9 @@
                 android:topLeftRadius="20dp"
                 android:topRightRadius="20dp" />
 
-            <stroke android:color="@color/lavender"
-                android:width="5dp"
-                />
+            <!--<stroke android:color="@color/lavender"-->
+                <!--android:width="5dp"-->
+                <!--/>-->
         </shape>
 
     </item>

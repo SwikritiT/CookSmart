@@ -2,6 +2,8 @@ package ellere.cooksmart;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,8 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
+import android.content.res.Resources;
 import java.util.List;
+import static ellere.cooksmart.API_creator.count;
 
 /**
  * Created by swikriti on 8/22/2019.
@@ -18,6 +21,7 @@ import java.util.List;
 
 public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.DrinksViewHolder> {
     private Context mContext;
+
 
     private List<CommonModel> drinksList;
     private CommonClickListener drinksClickListener;
@@ -31,19 +35,36 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.DrinksView
 
             linearLayout=(LinearLayout) view.findViewById(R.id.drinks_linearlayout);
             drinksbutton.setOnClickListener(new View.OnClickListener() {
-                boolean isClickedDummy=true;
+//                Drawable dr = getResources().getDrawable(R.drawable.button_pressed);
+//    dr.setColorFilter(Color.parseColor("#FF0000"), PorterDuff.Mode.SRC_ATOP);
+
+
+                boolean isClicked=true;
+
 
                 @Override
                 public void onClick(View v) {
 
-                    if(isClickedDummy) {
-                        v.setBackgroundResource((R.drawable.button_pressed));
+
+                    if(isClicked) {
+
+                        v.setBackgroundResource((R.drawable.button_enabled));
+                        //v.setBackgroundColor(R.drawable.button_pressed);
+                        v.setSelected(true);
+
+
                         //v.setBackgroundColor(Color.parseColor("#D3D3D3"));
-                     isClickedDummy = false;
+                     isClicked=false;
+                     count=1;
                     } else {
                         v.setBackgroundResource((R.drawable.button_default));
-                        //v.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                      isClickedDummy = true;
+                        //v.setBackgroundColor(R.drawable.button_default);
+                        v.setSelected(false);
+                        isClicked=true;
+                        count=0;
+
+
+
                     }
                     //Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
                     if(drinksClickListener !=null){
