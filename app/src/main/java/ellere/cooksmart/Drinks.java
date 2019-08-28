@@ -1,6 +1,5 @@
 package ellere.cooksmart;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -24,19 +23,20 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
+import static ellere.cooksmart.API_creator.count;
 
 /**
  * Created by swikriti on 8/14/2019.
  */
 
-public class Drinks extends AppCompatActivity implements DrinksClickListener{
+public class Drinks extends AppCompatActivity implements CommonClickListener {
     private RecyclerView recyclerView;
-    private DrinksAdapter drinksAdapter;
-    private List<DrinksModel> drinksModelList;
+    private CommonAdapter drinksAdapter;
+    private List<CommonModel> drinksModelList;
     private Toolbar dtoolbar;
     private EditText editText;
     private Button button;
-    private DrinksClickListener drinksClickListener;
+    private CommonClickListener drinksClickListener;
     private LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +52,11 @@ public class Drinks extends AppCompatActivity implements DrinksClickListener{
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             dtoolbar.setElevation(10f);}
         initCollapsingToolbar();
-        recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView=(RecyclerView) findViewById(R.id.drinks_recycler_view);
         editText=(EditText) findViewById(R.id.drinks_edittext);
-        button=(Button) findViewById(R.id.drinks_button);
+        button=(Button) findViewById(R.id.common_button);
         drinksModelList=new ArrayList<>();
-        drinksAdapter= new DrinksAdapter(this,drinksModelList);
+        drinksAdapter= new CommonAdapter(this,drinksModelList);
         drinksAdapter.setClickListener(this);
         RecyclerView.LayoutManager mlayoutManager=new GridLayoutManager(this,3);
         recyclerView.setLayoutManager(mlayoutManager);
@@ -110,49 +110,49 @@ public class Drinks extends AppCompatActivity implements DrinksClickListener{
     }
 
     private void prepareDrinks(){
-        DrinksModel d = new DrinksModel("lemon");
+        CommonModel d = new CommonModel("lemon");
         drinksModelList.add(d);
-        d=new DrinksModel("mint");
+        d=new CommonModel("mint");
         drinksModelList.add(d);
-        d=new DrinksModel("sugar");
+        d=new CommonModel("sugar");
         drinksModelList.add(d);
-        d=new DrinksModel("salt");
+        d=new CommonModel("salt");
         drinksModelList.add(d);
-        d=new DrinksModel("ice cubes");
+        d=new CommonModel("ice cubes");
         drinksModelList.add(d);
-        d=new DrinksModel("water");
+        d=new CommonModel("water");
         drinksModelList.add(d);
-        d=new DrinksModel("soda");
+        d=new CommonModel("soda");
         drinksModelList.add(d);
-        d=new DrinksModel("black salt");
+        d=new CommonModel("black salt");
         drinksModelList.add(d);
-        d=new DrinksModel("sugarcane juice");
+        d=new CommonModel("sugarcane juice");
         drinksModelList.add(d);
-        d=new DrinksModel("banana");
+        d=new CommonModel("banana");
         drinksModelList.add(d);
-        d=new DrinksModel("yoghurt");
+        d=new CommonModel("yoghurt");
         drinksModelList.add(d);
-        d=new DrinksModel("cashew nut");
+        d=new CommonModel("cashew nut");
         drinksModelList.add(d);
-        d=new DrinksModel("honey");
+        d=new CommonModel("honey");
         drinksModelList.add(d);
-        d=new DrinksModel("milk");
+        d=new CommonModel("milk");
         drinksModelList.add(d);
-        d=new DrinksModel("tea");
+        d=new CommonModel("tea");
         drinksModelList.add(d);
-        d=new DrinksModel("coffee");
+        d=new CommonModel("coffee");
         drinksModelList.add(d);
-        d=new DrinksModel("ice cream");
+        d=new CommonModel("ice cream");
         drinksModelList.add(d);
-        d=new DrinksModel("chocolate syrup");
+        d=new CommonModel("chocolate syrup");
         drinksModelList.add(d);
-        d=new DrinksModel("mango");
+        d=new CommonModel("mango");
         drinksModelList.add(d);
-        d=new DrinksModel("coconut milk");
+        d=new CommonModel("coconut milk");
         drinksModelList.add(d);
-        d=new DrinksModel("coconut water");
+        d=new CommonModel("coconut water");
         drinksModelList.add(d);
-        d=new DrinksModel("black pepper");
+        d=new CommonModel("black pepper");
         drinksModelList.add(d);
         drinksAdapter.notifyDataSetChanged();
     }
@@ -160,155 +160,374 @@ public class Drinks extends AppCompatActivity implements DrinksClickListener{
     @Override
     public void buttonClicked(View view, int position) {
         if (position==0){
-           final DrinksModel drinkModel1=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel1.getName()+", ");
+           final CommonModel drinkModel1=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+           String text2=drinkModel1.getName()+", ";
+            String text= text1+text2;
+           editText.setText(text);
+           if(count==0){
+               text=text.replace(text2,"");
+               editText.setText(text);
+
+
+
+           }
+
+
 
 
 
         }
         if (position==1){
-            final DrinksModel drinkModel2=drinksModelList.get(position);
+            final CommonModel drinkModel2=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel2.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
 
-            editText.setText(editText.getText()+drinkModel2.getName()+", ");
+
+
+            }
 
 
 
         }
         if (position==2){
-             final DrinksModel drinkModel3=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel3.getName()+", ");
+             final CommonModel drinkModel3=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel3.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
 
+
+
+            }
 
 
         }
         if (position==3){
-            final DrinksModel drinkModel4=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel4.getName()+", ");
+            final CommonModel drinkModel4=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel4.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==4){
-            final DrinksModel drinkModel5=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel5.getName()+", ");
+            final CommonModel drinkModel5=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel5.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==5){
-            final DrinksModel drinkModel6=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel6.getName()+", ");
+            final CommonModel drinkModel6=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel6.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==6){
-            final DrinksModel drinkModel7=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel7.getName()+", ");
+            final CommonModel drinkModel7=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel7.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==7){
-            final DrinksModel drinkModel8=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel8.getName()+", ");
+            final CommonModel drinkModel8=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel8.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
         }
         if (position==8){
-            final DrinksModel drinkModel9=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel9.getName()+", ");
+            final CommonModel drinkModel9=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel9.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==9){
-            final DrinksModel drinkModel10=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel10.getName()+", ");
+            final CommonModel drinkModel10=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel10.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==10){
-            final DrinksModel drinkModel11=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel11.getName()+", ");
+            final CommonModel drinkModel11=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel11.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==11){
-            final DrinksModel drinkModel12=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel12.getName()+", ");
+            final CommonModel drinkModel12=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel12.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
 
+
+
+            }
 
 
         }
         if (position==12){
-            final DrinksModel drinkModel13=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel13.getName()+", ");
+            final CommonModel drinkModel13=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel13.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==13){
-            final DrinksModel drinkModel14=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel14.getName()+", ");
+            final CommonModel drinkModel14=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel14.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==14){
-            final DrinksModel drinkModel15=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel15.getName()+", ");
+            final CommonModel drinkModel15=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel15.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
+
 
 
 
         }
         if (position==15){
-            final DrinksModel drinkModel16=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel16.getName()+", ");
+            final CommonModel drinkModel16=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel16.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==16){
-            final DrinksModel drinkModel17=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel17.getName()+", ");
+            final CommonModel drinkModel17=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel17.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
 
+
+
+            }
 
 
         }
         if (position==17){
-            final DrinksModel drinkModel18=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel18.getName()+", ");
+            final CommonModel drinkModel18=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel18.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==18){
-            final DrinksModel drinkModel19=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel19.getName()+", ");
+            final CommonModel drinkModel19=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel19.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==19){
-            final DrinksModel drinkModel20=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel20.getName()+", ");
+            final CommonModel drinkModel20=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel20.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==20){
-            final DrinksModel drinkModel21=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel21.getName()+", ");
+            final CommonModel drinkModel21=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel21.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 
         }
         if (position==21){
-            final DrinksModel drinkModel22=drinksModelList.get(position);
-            editText.setText(editText.getText()+drinkModel22.getName()+", ");
+            final CommonModel drinkModel22=drinksModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel22.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
 
 
 

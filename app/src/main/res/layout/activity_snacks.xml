@@ -6,7 +6,7 @@
     android:id="@+id/snacks_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/viewBg"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -59,6 +59,29 @@
 
 
     </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:id="@+id/snacks_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/viewBg"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/snacks_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Select desired ingredients"
+            android:textColor="@color/dimgray"
+            android:focusable="true"
+            android:theme="@style/EdittextTheme"/>
+        <include layout="@layout/recyclerview_snacks" />
+    </LinearLayout>
 
 
 
