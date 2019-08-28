@@ -18,7 +18,7 @@ import java.util.List;
 
 public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.DrinksViewHolder> {
     private Context mContext;
-    boolean isClickedDummy;
+
     private List<CommonModel> drinksList;
     private CommonClickListener drinksClickListener;
     private LinearLayout linearLayout;
@@ -26,23 +26,25 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.DrinksView
         private Button drinksbutton;
         public DrinksViewHolder(@NonNull View view) {
             super(view);
-            isClickedDummy=true;
+
             drinksbutton=(Button) view.findViewById(R.id.common_button);
+
             linearLayout=(LinearLayout) view.findViewById(R.id.drinks_linearlayout);
             drinksbutton.setOnClickListener(new View.OnClickListener() {
+                boolean isClickedDummy=true;
 
                 @Override
                 public void onClick(View v) {
 
-//                    if(isClickedDummy) {
-//                        v.setEnabled(true);
-////                        v.setBackgroundColor(Color.parseColor("#D3D3D3"));
-//                     isClickedDummy = false;
-//                    } else {
-//                        v.setEnabled(false);
-////                        v.setBackgroundColor(Color.parseColor("#FFFFFF"));
-//                      isClickedDummy = true;
-//                    }
+                    if(isClickedDummy) {
+                        v.setBackgroundResource((R.drawable.button_pressed));
+                        //v.setBackgroundColor(Color.parseColor("#D3D3D3"));
+                     isClickedDummy = false;
+                    } else {
+                        v.setBackgroundResource((R.drawable.button_default));
+                        //v.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                      isClickedDummy = true;
+                    }
                     //Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
                     if(drinksClickListener !=null){
 
