@@ -54,6 +54,8 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
         recyclerView=(RecyclerView) findViewById(R.id.breakfast_recycler_view);
         editText=(EditText) findViewById(R.id.breakfast_edittext);
         //button=(Button) findViewById(R.id.common_button);
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         breakfastModelList=new ArrayList<>();
         breakfastAdapter= new CommonAdapter(this,breakfastModelList);
         breakfastAdapter.setClickListener(this);
