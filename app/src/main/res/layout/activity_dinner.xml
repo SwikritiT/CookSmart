@@ -68,18 +68,37 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
         <EditText
             android:id="@+id/dinner_edittext"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginEnd="2dp"
+
             android:hint="Select desired ingredients"
             android:textColor="@color/dimgray"
             android:focusable="true"
             android:theme="@style/EdittextTheme"/>
+
+            <ImageButton
+                android:id="@+id/searchDinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                android:background="@color/viewBg"
+
+                android:gravity="center"
+
+                />
+
+            </LinearLayout>
         <include layout="@layout/recyclerview_dinner" />
     </LinearLayout>
 

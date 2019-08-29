@@ -55,6 +55,8 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.snacks_recycler_view);
         editText=(EditText) findViewById(R.id.snacks_edittext);
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         button=(Button) findViewById(R.id.common_button);
         snacksModelList=new ArrayList<>();
         snacksAdapter= new CommonAdapter(this,snacksModelList);

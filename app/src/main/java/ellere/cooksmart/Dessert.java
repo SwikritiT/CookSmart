@@ -52,6 +52,8 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         recyclerView=(RecyclerView) findViewById(R.id.dessert_recycler_view);
         editText=(EditText) findViewById(R.id.dessert_edittext);
         //button=(Button) findViewById(R.id.common_button);
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         dessertModelList=new ArrayList<>();
         dessertAdapter= new CommonAdapter(this,dessertModelList);
         dessertAdapter.setClickListener(this);

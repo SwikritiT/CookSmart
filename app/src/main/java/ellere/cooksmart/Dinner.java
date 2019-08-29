@@ -56,6 +56,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.dinner_recycler_view);
         editText=(EditText) findViewById(R.id.dinner_edittext);
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         button=(Button) findViewById(R.id.common_button);
         dinnerModelList=new ArrayList<>();
         dinnerAdapter= new CommonAdapter(this,dinnerModelList);

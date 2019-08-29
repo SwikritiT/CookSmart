@@ -55,6 +55,8 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
         recyclerView=(RecyclerView) findViewById(R.id.curry_recycler_view);
         editText=(EditText) findViewById(R.id.curry_edittext);
         //button=(Button) findViewById(R.id.common_button);
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         curryModelList=new ArrayList<>();
         curryAdapter= new CommonAdapter(this,curryModelList);
         curryAdapter.setClickListener(this);
