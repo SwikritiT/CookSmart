@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -11,18 +12,37 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.R.attr.tag;
+import static ellere.cooksmart.API_creator.BASE_URL;
 import static ellere.cooksmart.API_creator.count;
 
 /**
@@ -30,12 +50,15 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Drinks extends AppCompatActivity implements CommonClickListener {
+    String reg_url = BASE_URL+"drinks.php";
     private RecyclerView recyclerView;
     private CommonAdapter drinksAdapter;
     private List<CommonModel> drinksModelList;
+    private ArrayList <String> inputDrinks;
     private Toolbar dtoolbar;
     private EditText editText;
     private Button button;
+    private ImageButton sbutton;
     private CommonClickListener drinksClickListener;
     private LinearLayout linearLayout;
     @Override
@@ -57,6 +80,8 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
         editText.setCursorVisible(false);
         editText.setFocusable(false);
         button=(Button) findViewById(R.id.common_button);
+        sbutton=(ImageButton) findViewById(R.id.searchDrinks);
+        inputDrinks= new ArrayList<>();
         drinksModelList=new ArrayList<>();
         drinksAdapter= new CommonAdapter(this,drinksModelList);
         drinksAdapter.setClickListener(this);
@@ -161,51 +186,36 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
 
     @Override
     public void buttonClicked(View view, int position) {
-        if (position==0){
-           final CommonModel drinkModel1=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-           String text2=drinkModel1.getName()+", ";
-            String text= text1+text2;
-           editText.setText(text);
-           if(count==0){
-               text=text.replace(text2,"");
-               editText.setText(text);
-
-
-
-           }
-
-
-
-
-
-        }
-        if (position==1){
-            final CommonModel drinkModel2=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel2.getName()+", ";
-            String text= text1+text2;
+        if (position == 0) {
+            final CommonModel drinkModel1 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel1.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
-
         }
-        if (position==2){
-             final CommonModel drinkModel3=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel3.getName()+", ";
-            String text= text1+text2;
+        if (position == 1) {
+            final CommonModel drinkModel2 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel2.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+
+                text = text.replace(text2, "");
+
                 editText.setText(text);
+                inputDrinks.add(text);
 
 
 
@@ -213,335 +223,392 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
 
 
         }
-        if (position==3){
-            final CommonModel drinkModel4=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel4.getName()+", ";
-            String text= text1+text2;
+        if (position == 2) {
+            final CommonModel drinkModel3 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel3.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==4){
-            final CommonModel drinkModel5=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel5.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==5){
-            final CommonModel drinkModel6=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel6.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==6){
-            final CommonModel drinkModel7=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel7.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==7){
-            final CommonModel drinkModel8=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel8.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
         }
-        if (position==8){
-            final CommonModel drinkModel9=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel9.getName()+", ";
-            String text= text1+text2;
+        if (position == 3) {
+            final CommonModel drinkModel4 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel4.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==9){
-            final CommonModel drinkModel10=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel10.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==10){
-            final CommonModel drinkModel11=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel11.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==11){
-            final CommonModel drinkModel12=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel12.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
         }
-        if (position==12){
-            final CommonModel drinkModel13=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel13.getName()+", ";
-            String text= text1+text2;
+        if (position == 4) {
+            final CommonModel drinkModel5 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel5.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==13){
-            final CommonModel drinkModel14=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel14.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==14){
-            final CommonModel drinkModel15=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel15.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-
-        }
-        if (position==15){
-            final CommonModel drinkModel16=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel16.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==16){
-            final CommonModel drinkModel17=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel17.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
         }
-        if (position==17){
-            final CommonModel drinkModel18=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel18.getName()+", ";
-            String text= text1+text2;
+        if (position == 5) {
+            final CommonModel drinkModel6 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel6.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
-
         }
-        if (position==18){
-            final CommonModel drinkModel19=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel19.getName()+", ";
-            String text= text1+text2;
+        if (position == 6) {
+            final CommonModel drinkModel7 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel7.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
-
         }
-        if (position==19){
-            final CommonModel drinkModel20=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel20.getName()+", ";
-            String text= text1+text2;
+        if (position == 7) {
+            final CommonModel drinkModel8 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel8.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
-
         }
-        if (position==20){
-            final CommonModel drinkModel21=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel21.getName()+", ";
-            String text= text1+text2;
+        if (position == 8) {
+            final CommonModel drinkModel9 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel9.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
-
         }
-        if (position==21){
-            final CommonModel drinkModel22=drinksModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel22.getName()+", ";
-            String text= text1+text2;
+        if (position == 9) {
+            final CommonModel drinkModel10 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel10.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
             editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
+            if (count == 0) {
+                text = text.replace(text2, "");
                 editText.setText(text);
-
+                inputDrinks.add(text);
 
 
             }
 
 
+        }
+        if (position == 10) {
+            final CommonModel drinkModel11 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel11.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 11) {
+            final CommonModel drinkModel12 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel12.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 12) {
+            final CommonModel drinkModel13 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel13.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 13) {
+            final CommonModel drinkModel14 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel14.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 14) {
+            final CommonModel drinkModel15 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel15.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 15) {
+            final CommonModel drinkModel16 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel16.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 16) {
+            final CommonModel drinkModel17 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel17.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 17) {
+            final CommonModel drinkModel18 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel18.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 18) {
+            final CommonModel drinkModel19 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel19.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 19) {
+            final CommonModel drinkModel20 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel20.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 20) {
+            final CommonModel drinkModel21 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel21.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
+
+        }
+        if (position == 21) {
+            final CommonModel drinkModel22 = drinksModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel22.getName() + ", ";
+            String text = text1 + text2;
+            inputDrinks.add(text);
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+                inputDrinks.add(text);
+
+
+            }
+
 
         }
 
+        for (int i = 0; i < inputDrinks.size(); i++) {
 
 
-
+            Log.d("value", inputDrinks.get(i));
         }
+        sbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Gson gson = new Gson();
+                final String newDataArray = gson.toJson(inputDrinks);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, reg_url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    String success = jsonObject.getString("flag");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("array", newDataArray); // array is a key which will be used in server side
 
 
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+            }
 
+
+        });
+    }
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;
