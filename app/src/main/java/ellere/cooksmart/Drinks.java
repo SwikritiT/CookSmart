@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -57,6 +58,7 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
     private Toolbar dtoolbar;
     private EditText editText;
     private Button button;
+    private ImageButton sbutton;
     private CommonClickListener drinksClickListener;
     private LinearLayout linearLayout;
     @Override
@@ -78,6 +80,7 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
         editText.setCursorVisible(false);
         editText.setFocusable(false);
         button=(Button) findViewById(R.id.common_button);
+        sbutton=(ImageButton) findViewById(R.id.searchDrinks);
         inputDrinks= new ArrayList<>();
         drinksModelList=new ArrayList<>();
         drinksAdapter= new CommonAdapter(this,drinksModelList);
@@ -564,57 +567,47 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
 
         for (int i = 0; i < inputDrinks.size(); i++) {
 
-//            Log.d(tag"value",inputDrinks.get(i));
+
             Log.d("value", inputDrinks.get(i));
         }
-
-        Gson gson= new Gson();
-        final String newDataArray=gson.toJson(inputDrinks);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, reg_url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("flag");
-//                            JSONObject myObj=new JSONObject(success);
-//                            if (success.equals("1")) {
-//                                Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
-//                                Intent intent = new Intent(SignUp.this, HomePage.class);
-//                                startActivity(intent);
-//                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            //Toast.makeText(SignUp.this, "Register failed" + e.toString(), Toast.LENGTH_SHORT).show();
-                        }
-
-
-                    }
-                },
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(SignUp.this, "Register Failed" + error.toString(), Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-
-        {
+        sbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("array", newDataArray); // array is a key which will be used in server side
+            public void onClick(View view) {
+                Gson gson = new Gson();
+                final String newDataArray = gson.toJson(inputDrinks);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, reg_url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    String success = jsonObject.getString("flag");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("array", newDataArray); // array is a key which will be used in server side
 
 
-                return params;
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
             }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
 
 
+        });
     }
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
