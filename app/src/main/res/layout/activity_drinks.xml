@@ -68,11 +68,10 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/drinks_edittext"
@@ -85,30 +84,24 @@
 
             android:hint="Select desired ingredients"
             android:textColor="@color/dimgray"
-            android:focusable="true"
             android:theme="@style/EdittextTheme"/>
-            <!--<view-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"/>-->
+        <ImageButton
+            android:id="@+id/searchDrinks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_search"
+            android:background="@drawable/searchbutton_bg"
 
-            <ImageButton
-                android:id="@+id/searchDrinks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_search"
-                android:background="@drawable/btn_statechg"
+            android:gravity="center"
 
-                android:gravity="center"
-
-                />
-
-        </LinearLayout>
-
-        <include layout="@layout/recyclerview_drinks" />
-
+            />
     </LinearLayout>
 
-
+        <include layout="@layout/recyclerview_drinks" />
+    </LinearLayout>
             <!--/>-->
     <!--&lt;!&ndash;<TextView&ndash;&gt;-->
             <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->

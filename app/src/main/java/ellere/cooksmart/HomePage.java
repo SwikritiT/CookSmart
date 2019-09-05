@@ -1,6 +1,8 @@
 package ellere.cooksmart;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -36,6 +38,8 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     private RecyclerView recyclerView;
     private CategoriesAdapter categoriesAdapter;
     private List<CategoriesModel> categoriesModelList;
+    private Context context;
+
    //private static final String EXTRA__ITEM = "image_url";
 //    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME = "image_transition_name";
 //    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME2 = "image_transition_name2";
@@ -55,14 +59,29 @@ public class HomePage extends AppCompatActivity implements ClickListener {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                String title=(String) item.getTitle();
-                Toast.makeText(HomePage.this,title+" selected!",Toast.LENGTH_SHORT).show();
-                return true;
+                String title = (String) item.getTitle();
+                switch (item.getItemId()) {
+                    case R.id.profile:
+                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+                    case R.id.help:
+                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.setting:
+                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+                    case R.id.logout:
+                        logout();
+                        return true;
+                    default:
+                        return onMenuItemClick(item);
+                }
+
+
             }
         });
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             toolbar.setElevation(10f);}
         initCollapsingToolbar();
+
         recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
         categoriesModelList=new ArrayList<>();
         categoriesAdapter= new CategoriesAdapter(getApplicationContext(), categoriesModelList, this);;
@@ -112,6 +131,15 @@ public class HomePage extends AppCompatActivity implements ClickListener {
 
             }
         });
+    }
+    public  void logout(){
+        SharedPreferences sharedpreferences = getSharedPreferences(Login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.apply();
+        Intent intent=new Intent(HomePage.this,Login.class);
+        startActivity(intent);
+        //((HomePage) context).finish();
     }
     private void prepareCategories(){
         int[] covers= new int[]{

@@ -51,6 +51,9 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.dessert_recycler_view);
         editText=(EditText) findViewById(R.id.dessert_edittext);
+        editText.setSelection(editText.getText().length());
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         //button=(Button) findViewById(R.id.common_button);
         editText.setCursorVisible(false);
         editText.setFocusable(false);

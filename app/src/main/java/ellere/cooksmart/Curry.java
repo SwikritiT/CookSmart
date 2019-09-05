@@ -54,6 +54,9 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.curry_recycler_view);
         editText=(EditText) findViewById(R.id.curry_edittext);
+        editText.setSelection(editText.getText().length());
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         //button=(Button) findViewById(R.id.common_button);
         editText.setCursorVisible(false);
         editText.setFocusable(false);

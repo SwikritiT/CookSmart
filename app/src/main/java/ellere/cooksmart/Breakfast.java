@@ -53,6 +53,9 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.breakfast_recycler_view);
         editText=(EditText) findViewById(R.id.breakfast_edittext);
+        editText.setSelection(editText.getText().length());
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         //button=(Button) findViewById(R.id.common_button);
         editText.setCursorVisible(false);
         editText.setFocusable(false);
