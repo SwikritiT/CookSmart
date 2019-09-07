@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drinks_content"
+    android:background="@color/viewBg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -60,264 +61,288 @@
 
     </android.support.design.widget.AppBarLayout>
     <LinearLayout
+        android:id="@+id/drinks_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/viewBg"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_marginBottom="50dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <EditText
-            android:layout_width="match_parent"
+            android:id="@+id/drinks_edittext"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginEnd="2dp"
+
             android:hint="Select desired ingredients"
             android:textColor="@color/dimgray"
+            android:theme="@style/EdittextTheme"/>
+        <ImageButton
+            android:id="@+id/searchDrinks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
             android:focusable="true"
-            android:theme="@style/EdittextTheme"
+            android:src="@drawable/ic_search"
+            android:background="@drawable/searchbutton_bg"
+
+            android:gravity="center"
+
             />
-    <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginStart="20dp"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:layout_marginRight="20dp"-->
-            <!--android:text="hello"-->
+    </LinearLayout>
+
+        <include layout="@layout/recyclerview_drinks" />
+    </LinearLayout>
+            <!--/>-->
+    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginStart="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="hello"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginTop="20dp"&ndash;&gt;-->
+
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="5dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginStart="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="30dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginEnd="30dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/txtview_bg"&ndash;&gt;-->
+
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+
+
+
+
+    <!--<android.support.v7.widget.GridLayout-->
+        <!--android:id="@+id/drinks_gridlayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:rowCount="4"-->
+        <!--android:padding="15dp"-->
+
+
+        <!--app:orientation="vertical"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--&gt;-->
+        <!--&lt;!&ndash;android:layout_gravity="fill_vertical"&ndash;&gt;-->
+
+        <!--<Button-->
+            <!--android:id="@+id/lemon"-->
+            <!--app:layout_gravity="fill_horizontal"-->
+
+
+
+            <!--android:layout_margin="5dp"-->
             <!--android:layout_marginTop="20dp"-->
 
-            <!--/>-->
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="5dp"-->
-            <!--android:layout_marginStart="20dp"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:layout_marginRight="30dp"-->
-            <!--android:layout_marginEnd="30dp"-->
-            <!--android:background="@drawable/txtview_bg"-->
+            <!--android:text="@string/lemon"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:theme="@style/MyButton"-->
 
             <!--/>-->
+        <!--&lt;!&ndash;app:layout_row="0"&ndash;&gt;-->
+        <!--<Button-->
+            <!--android:id="@+id/mint"-->
+
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:text="@string/mint"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:theme="@style/MyButton"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/sugar"-->
+
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--app:layout_gravity="fill_horizontal"-->
+
+            <!--android:text="@string/sugar"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:theme="@style/MyButton"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/salt"-->
+
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:text="@string/salt"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:theme="@style/MyButton"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/iceCubes"-->
+
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:text="@string/ice_cubes"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:theme="@style/MyButton"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/water"-->
+
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="@string/water"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:theme="@style/MyButton"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/soda"-->
+
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="@string/soda"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:theme="@style/MyButton"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/blackSalt"-->
+
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="@string/Black_salt"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/sugarcaneJuice"-->
+
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="@string/sugarcane_juice"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/banana"-->
+
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="@string/Banana"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/yoghurt"-->
+
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="@string/yoghurt"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+
+            <!--/>-->
+        <!--<Button-->
+            <!--android:id="@+id/cashew_nut"-->
+
+            <!--app:layout_gravity="fill_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="@string/cashew_nut"-->
+            <!--android:background="@drawable/grid_btn_bg"-->
+            <!--android:fontFamily="sans-serif-medium"-->
+            <!--android:textSize="13sp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+
+            <!--/>-->
 
 
 
-
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/drinks_gridlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:rowCount="4"
-        android:padding="15dp"
-
-
-        app:orientation="vertical"
-        android:layout_marginTop="20dp"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        >
-        <!--android:layout_gravity="fill_vertical"-->
-
-        <Button
-            android:id="@+id/lemon"
-            app:layout_gravity="fill_horizontal"
-
-
-
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-
-            android:text="@string/lemon"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:theme="@style/MyButton"
-
-            />
-        <!--app:layout_row="0"-->
-        <Button
-            android:id="@+id/mint"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            app:layout_gravity="fill_horizontal"
-            android:text="@string/mint"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:theme="@style/MyButton"
-            />
-        <Button
-            android:id="@+id/sugar"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            app:layout_gravity="fill_horizontal"
-
-            android:text="@string/sugar"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:theme="@style/MyButton"
-            />
-        <Button
-            android:id="@+id/salt"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            app:layout_gravity="fill_horizontal"
-            android:text="@string/salt"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:theme="@style/MyButton"
-            />
-        <Button
-            android:id="@+id/iceCubes"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            app:layout_gravity="fill_horizontal"
-            android:text="@string/ice_cubes"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:theme="@style/MyButton"
-            />
-        <Button
-            android:id="@+id/water"
-
-            app:layout_gravity="fill_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/water"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:theme="@style/MyButton"
-            />
-        <Button
-            android:id="@+id/soda"
-
-            app:layout_gravity="fill_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/soda"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:theme="@style/MyButton"
-            />
-        <Button
-            android:id="@+id/blackSalt"
-
-            app:layout_gravity="fill_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/Black_salt"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-
-            />
-        <Button
-            android:id="@+id/sugarcaneJuice"
-
-            app:layout_gravity="fill_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/sugarcane_juice"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-
-            />
-        <Button
-            android:id="@+id/banana"
-
-            app:layout_gravity="fill_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/Banana"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-
-            />
-        <Button
-            android:id="@+id/yoghurt"
-
-            app:layout_gravity="fill_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/yoghurt"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-
-            />
-        <Button
-            android:id="@+id/cashew_nut"
-
-            app:layout_gravity="fill_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/cashew_nut"
-            android:background="@drawable/grid_btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="13sp"
-            android:clickable="true"
-            android:focusable="true"
-
-            />
-
-
-
-    </android.support.v7.widget.GridLayout>
-    </LinearLayout>
+    <!--</android.support.v7.widget.GridLayout>-->
+    <!--</LinearLayout>-->
 
 
 

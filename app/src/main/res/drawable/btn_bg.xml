@@ -9,4 +9,11 @@
         android:topRightRadius="20dp"/>
     <stroke android:color="@color/grey"
         android:width="1dp" />
+    <gradient
+        android:angle="45"
+        android:centerColor="@color/colorPrimaryLight"
+        android:endColor="@color/ghostwhite"
+        android:startColor="@color/colorPrimaryLight"
+        android:centerX="35%"
+        android:type="linear"/>
 </shape>

@@ -6,7 +6,7 @@
     android:id="@+id/breakfast_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/viewBg"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -61,6 +61,45 @@
 
 
     </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:id="@+id/breakfast_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/viewBg"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/breakfast_edittext"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginEnd="2dp"
+
+            android:hint="Select desired ingredients"
+            android:textColor="@color/dimgray"
+            android:theme="@style/EdittextTheme"/>
+        <ImageButton
+            android:id="@+id/searchBreakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:background="@drawable/searchbutton_bg"
+            android:gravity="center"
+
+            />
+        </LinearLayout>
+
+        <include layout="@layout/recyclerview_breakfast" />
+    </LinearLayout>
 
 
 

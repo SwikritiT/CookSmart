@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:state_pressed="true" android:drawable="@color/lightgray" >
+    <item android:state_pressed="true">
     <shape
         android:shape="oval"
         android:thickness="50dp">
-        <solid android:color="@color/lightgray">
-
-        </solid>
+        <solid android:color="@color/lightgray"/>
 
         <corners
             android:bottomLeftRadius="20dp"
@@ -18,16 +15,11 @@
         <stroke android:color="@color/viewBg"
             android:width="1dp" />
     </shape>
-</item>
-
-    <item android:state_focused="true" android:drawable="@color/colorPrimaryLight" >
-
+    </item>
+    <item android:state_focused="true" android:drawable="@color/colorPrimaryLight">
         <shape
             android:shape="oval"
             android:thickness="50dp">
-            <solid android:color="@color/lightgray">
-
-            </solid>
 
             <corners
                 android:bottomLeftRadius="20dp"
@@ -39,21 +31,20 @@
                 android:width="1dp" />
         </shape>
     </item>
-<item android:drawable="@color/viewBg">
-    <shape
-        android:shape="oval"
-        android:thickness="50dp">
-        <corners
-            android:bottomLeftRadius="20dp"
-            android:bottomRightRadius="20dp"
-            android:topLeftRadius="20dp"
-            android:topRightRadius="20dp"/>
 
-        <stroke android:color="@color/viewBg"
-            android:width="1dp" />
-    </shape>
+    <item android:drawable="@color/viewBg" >
+        <shape
+            android:shape="oval"
+            android:thickness="50dp">
 
+            <corners
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp"/>
 
-
-</item>
+            <stroke android:color="@color/viewBg"
+                android:width="1dp" />
+        </shape>
+    </item>
 </selector>

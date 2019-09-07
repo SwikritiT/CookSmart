@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,14 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 public class Login extends AppCompatActivity {
      Button loginbtn, gosignupbtn;
     EditText user, pass;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String UserName = "nameKey";
+    public static final String Password = "passKey";
+    public static final String Email = "emailKey";
+    int PRIVATE_MODE = 0;
+   // SessionManager sessionManager;
+
+    SharedPreferences sharedpreferences;
     String reg_url = BASE_URL+"login.php";
 
 
@@ -42,11 +51,14 @@ public class Login extends AppCompatActivity {
         loginbtn=(Button) findViewById(R.id.login_btn);
         user=(EditText) findViewById(R.id.username_login);
         pass=(EditText) findViewById(R.id.password_login);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         loginbtn.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
                                           String username = user.getText().toString();
                                           String password = pass.getText().toString();
+
+
 
                                           if (username.equals("") || password.equals("")) {
                                               Toast.makeText(getBaseContext(), "Fill up all the field properly", Toast.LENGTH_SHORT).show();
@@ -54,6 +66,7 @@ public class Login extends AppCompatActivity {
                                           }
                                           else
                                           {
+
                                               UserLoginFunction(username, password);
                                           }
 
@@ -81,12 +94,25 @@ public class Login extends AppCompatActivity {
                             String success =jsonObject.getString("flag");
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")){
+//                                SharedPreferences.Editor editor = sharedpreferences.edit();
+//
+//                                editor.putString(UserName, username);
+//                                editor.putString(Password, password);
+//                                //editor.putString(Email, e);
+//                                editor.apply();
+                                //sessionManager.createSession(username,password);
+
+
 
                                     //Log.d("test",">>>>1"+textView1.getText());
                                     Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+
                                     //if(pref.contains("username")&& pref.contains("password"))
 
-                                    Intent intent = new Intent(Login.this, HomePage.class);
+
+
+                                Intent intent = new Intent(Login.this, HomePage.class);
+
                                     startActivity(intent);
                                 }
 
@@ -116,6 +142,7 @@ public class Login extends AppCompatActivity {
                 Map<String,String> params=new HashMap<>();
                 params.put("username",username);
                 params.put("password",password);
+
 
                 return params;
             }
