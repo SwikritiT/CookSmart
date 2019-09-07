@@ -11,19 +11,30 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import static ellere.cooksmart.API_creator.BASE_URL;
 import static ellere.cooksmart.API_creator.count;
 
 /**
@@ -31,9 +42,12 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Breakfast extends AppCompatActivity implements CommonClickListener{
+    String breakfast_url = BASE_URL+"drinks.php";
     private RecyclerView recyclerView;
     private CommonAdapter breakfastAdapter;
     private List<CommonModel> breakfastModelList;
+    private List<DrinksModel> inputBreakfast;
+    private ImageButton sbutton;
     private EditText editText;
     private Toolbar btoolbar;
     @Override
@@ -59,7 +73,10 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
         //button=(Button) findViewById(R.id.common_button);
         editText.setCursorVisible(false);
         editText.setFocusable(false);
+        sbutton=(ImageButton) findViewById(R.id.searchBreakfast);
         breakfastModelList=new ArrayList<>();
+        inputBreakfast= new ArrayList<>();
+
         breakfastAdapter= new CommonAdapter(this,breakfastModelList);
         breakfastAdapter.setClickListener(this);
         RecyclerView.LayoutManager mlayoutManager=new GridLayoutManager(this,3);
@@ -110,50 +127,47 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
         });
     }
     private void prepareBreakfast(){
-        CommonModel d = new CommonModel("lemon");
+        CommonModel d = new CommonModel("bread");
         breakfastModelList.add(d);
-        d=new CommonModel("mint");
+        d=new CommonModel("cheese");
         breakfastModelList.add(d);
-        d=new CommonModel("sugar");
+        d=new CommonModel("tomato");
         breakfastModelList.add(d);
-        d=new CommonModel("salt");
+        d=new CommonModel("bell pepper");
         breakfastModelList.add(d);
-        d=new CommonModel("ice cubes");
+        d=new CommonModel("butter");
         breakfastModelList.add(d);
-        d=new CommonModel("water");
+        d=new CommonModel("egg");
         breakfastModelList.add(d);
-        d=new CommonModel("soda");
-        breakfastModelList.add(d);
-        d=new CommonModel("black salt");
-        breakfastModelList.add(d);
-        d=new CommonModel("sugarcane juice");
-        breakfastModelList.add(d);
-        d=new CommonModel("banana");
-        breakfastModelList.add(d);
-        d=new CommonModel("yoghurt");
-        breakfastModelList.add(d);
-        d=new CommonModel("cashew nut");
-        breakfastModelList.add(d);
-        d=new CommonModel("honey");
+        d=new CommonModel("flour");
         breakfastModelList.add(d);
         d=new CommonModel("milk");
         breakfastModelList.add(d);
-        d=new CommonModel("tea");
+        d=new CommonModel("onion");
         breakfastModelList.add(d);
-        d=new CommonModel("coffee");
+        d=new CommonModel("rice");
         breakfastModelList.add(d);
-        d=new CommonModel("ice cream");
+        d=new CommonModel("chili powder");
         breakfastModelList.add(d);
-        d=new CommonModel("chocolate syrup");
+        d=new CommonModel("mayonnaise");
         breakfastModelList.add(d);
-        d=new CommonModel("mango");
+        d=new CommonModel("oats");
         breakfastModelList.add(d);
-        d=new CommonModel("coconut milk");
+        d=new CommonModel("honey");
         breakfastModelList.add(d);
-        d=new CommonModel("coconut water");
+        d=new CommonModel("baking powder");
         breakfastModelList.add(d);
-        d=new CommonModel("black pepper");
+        d=new CommonModel("vanilla");
         breakfastModelList.add(d);
+        d=new CommonModel("cinnamon");
+        breakfastModelList.add(d);
+        d=new CommonModel("yoghurt");
+        breakfastModelList.add(d);
+        d=new CommonModel("lettuce");
+        breakfastModelList.add(d);
+        d=new CommonModel("baking soda");
+        breakfastModelList.add(d);
+
         breakfastAdapter.notifyDataSetChanged();
     }
 
@@ -573,36 +587,59 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
 
             }
         }
-        if (position==25) {
-            final CommonModel drinkModel26 = breakfastModelList.get(position);
-            String text1 = editText.getText().toString();
-            String text2 = drinkModel26.getName() + ", ";
-            String text = text1 + text2;
-            editText.setText(text);
-            if (count == 0) {
-                text = text.replace(text2, "");
-                editText.setText(text);
+
+        String finalList = editText.getText().toString();
+        DrinksModel d1 =new DrinksModel(finalList);
+        inputBreakfast.add(d1);
+
+        sbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Gson gson = new Gson();
+                final String newDataArray = gson.toJson(inputBreakfast);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, breakfast_url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+//                                    JSONObject jsonObject = new JSONObject(response);
+//                                    String success = jsonObject.getString("flag");
+                                    final String result = response.toString();
+                                    Log.d("response","result: " +result);
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                error.getMessage();
+
+                            }
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("ingredients_array", newDataArray); // array is a key which will be used in server side
 
 
+                        return params;
+                    }
+                };
+//                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+//                requestQueue.add(stringRequest);
+                Vconnection.getnInstance(getApplicationContext()).addRequestQue(stringRequest);
             }
-        }
-        if (position==26) {
-            final CommonModel drinkModel27 = breakfastModelList.get(position);
-            String text1 = editText.getText().toString();
-            String text2 = drinkModel27.getName() + ", ";
-            String text = text1 + text2;
-            editText.setText(text);
-            if (count == 0) {
-                text = text.replace(text2, "");
-                editText.setText(text);
 
 
-            }
-        }
-
-
+        });
 
     }
+
+
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;

@@ -11,19 +11,30 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import static ellere.cooksmart.API_creator.BASE_URL;
 import static ellere.cooksmart.API_creator.count;
 
 /**
@@ -31,11 +42,14 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Snacks extends AppCompatActivity implements CommonClickListener {
+    String snacks_url = BASE_URL+"drinks.php";
     private RecyclerView recyclerView;
     private CommonAdapter snacksAdapter;
     private List<CommonModel> snacksModelList;
     private EditText editText;
     private Button button;
+    private List<DrinksModel> inputSnacks;
+    private ImageButton sbutton;
     private CommonClickListener drinksClickListener;
     private LinearLayout linearLayout;
     private Toolbar stoolbar;
@@ -60,6 +74,8 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
         editText.setFocusable(false);
         button=(Button) findViewById(R.id.common_button);
         snacksModelList=new ArrayList<>();
+        sbutton=(ImageButton) findViewById(R.id.searchSnacks);
+        inputSnacks=new ArrayList<>();
         snacksAdapter= new CommonAdapter(this,snacksModelList);
         snacksAdapter.setClickListener(this);
         RecyclerView.LayoutManager mlayoutManager=new GridLayoutManager(this,3);
@@ -624,6 +640,54 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
 
             }
         }
+        String finalList = editText.getText().toString();
+        DrinksModel d1 =new DrinksModel(finalList);
+        inputSnacks.add(d1);
+
+        sbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Gson gson = new Gson();
+                final String newDataArray = gson.toJson(inputSnacks);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, snacks_url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+//                                    JSONObject jsonObject = new JSONObject(response);
+//                                    String success = jsonObject.getString("flag");
+                                    final String result = response.toString();
+                                    Log.d("response","result: " +result);
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                error.getMessage();
+
+                            }
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("ingredients_array", newDataArray); // array is a key which will be used in server side
+
+
+                        return params;
+                    }
+                };
+//                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+//                requestQueue.add(stringRequest);
+                Vconnection.getnInstance(getApplicationContext()).addRequestQue(stringRequest);
+            }
+
+
+        });
 
 
 

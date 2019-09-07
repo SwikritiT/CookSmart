@@ -194,13 +194,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel1.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -214,15 +214,15 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text = text1 + text2;
 
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
 
                 text = text.replace(text2, "");
 
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
 
@@ -236,13 +236,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel3.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -260,8 +260,8 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -274,13 +274,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel5.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -293,13 +293,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel6.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -312,13 +312,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel7.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -331,13 +331,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel8.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -350,13 +350,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel9.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -369,13 +369,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel10.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
             }
 
@@ -387,13 +387,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel11.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -406,13 +406,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel12.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -425,13 +425,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel13.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -444,13 +444,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel14.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -463,13 +463,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel15.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -482,13 +482,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel16.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -501,13 +501,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel17.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
             }
 
@@ -519,13 +519,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel18.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
             }
 
@@ -537,13 +537,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel19.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -556,13 +556,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel20.getName() + ", ";
             String text = text1 + text2;
            editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -575,13 +575,13 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel21.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//            DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
@@ -594,22 +594,25 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
             String text2 = drinkModel22.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
-//
+            DrinksModel d=new DrinksModel(text);
+            inputDrinks.add(d);
+
+
+
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
-//                DrinksModel d1=new DrinksModel(text);
-//                inputDrinks.add(d1); DrinksModel d=new DrinksModel(text);
-//            inputDrinks.add(d);
+                DrinksModel d1=new DrinksModel(text);
+                inputDrinks.add(d1);
 
 
             }
 
 
         }
-        String finalList = editText.getText().toString();
-        DrinksModel d=new DrinksModel(finalList);
-         inputDrinks.add(d);
+//        String finalList = editText.getText().toString();
+//        DrinksModel d=new DrinksModel(finalList);
+//         inputDrinks.add(d);
 
 
 //        for (int i = 0; i < inputDrinks.size(); i++) {
@@ -648,7 +651,7 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("drinks_array", newDataArray); // array is a key which will be used in server side
+                        params.put("ingredients_array", newDataArray); // array is a key which will be used in server side
 
 
                         return params;
