@@ -11,17 +11,28 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import static ellere.cooksmart.API_creator.BASE_URL;
 import static ellere.cooksmart.API_creator.count;
 
 
@@ -30,9 +41,12 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Dessert extends AppCompatActivity implements CommonClickListener{
+    String dessert_url = BASE_URL+"drinks.php";
     private RecyclerView recyclerView;
     private CommonAdapter dessertAdapter;
     private List<CommonModel> dessertModelList;
+    private List<DrinksModel> inputDessert;
+    private ImageButton sbutton;
     private EditText editText;
     private Toolbar dtoolbar;
     @Override
@@ -51,10 +65,15 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.dessert_recycler_view);
         editText=(EditText) findViewById(R.id.dessert_edittext);
+        editText.setSelection(editText.getText().length());
+        editText.setCursorVisible(false);
+        editText.setFocusable(false);
         //button=(Button) findViewById(R.id.common_button);
         editText.setCursorVisible(false);
         editText.setFocusable(false);
         dessertModelList=new ArrayList<>();
+        sbutton=(ImageButton) findViewById(R.id.searchDessert);
+        inputDessert=new ArrayList<>();
         dessertAdapter= new CommonAdapter(this,dessertModelList);
         dessertAdapter.setClickListener(this);
         RecyclerView.LayoutManager mlayoutManager=new GridLayoutManager(this,3);
@@ -105,49 +124,51 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         });
     }
     private void prepareCurry(){
-        CommonModel d = new CommonModel("lemon");
+        CommonModel d = new CommonModel("carrot");
         dessertModelList.add(d);
-        d=new CommonModel("mint");
+        d=new CommonModel("milk");
         dessertModelList.add(d);
-        d=new CommonModel("sugar");
+        d=new CommonModel("cardamom powder");
         dessertModelList.add(d);
         d=new CommonModel("salt");
         dessertModelList.add(d);
         d=new CommonModel("ice cubes");
         dessertModelList.add(d);
-        d=new CommonModel("water");
+        d=new CommonModel("ghee");
         dessertModelList.add(d);
-        d=new CommonModel("soda");
+        d=new CommonModel("gundh");
         dessertModelList.add(d);
-        d=new CommonModel("black salt");
+        d=new CommonModel("nut meg");
         dessertModelList.add(d);
-        d=new CommonModel("sugarcane juice");
+        d=new CommonModel("pistachio");
         dessertModelList.add(d);
-        d=new CommonModel("banana");
+        d=new CommonModel("almonds");
         dessertModelList.add(d);
-        d=new CommonModel("yoghurt");
+        d=new CommonModel("flour");
         dessertModelList.add(d);
-        d=new CommonModel("cashew nut");
+        d=new CommonModel("rice flour");
         dessertModelList.add(d);
-        d=new CommonModel("honey");
+        d=new CommonModel("baking powder");
         dessertModelList.add(d);
-        d=new CommonModel("milk");
+        d=new CommonModel("cashew nuts");
         dessertModelList.add(d);
-        d=new CommonModel("tea");
+        d=new CommonModel("lemon juice");
         dessertModelList.add(d);
-        d=new CommonModel("coffee");
+        d=new CommonModel("milk powder");
         dessertModelList.add(d);
-        d=new CommonModel("ice cream");
+        d=new CommonModel("baking soda");
         dessertModelList.add(d);
-        d=new CommonModel("chocolate syrup");
+        d=new CommonModel("keshar");
         dessertModelList.add(d);
-        d=new CommonModel("mango");
-        dessertModelList.add(d);
-        d=new CommonModel("coconut milk");
-        dessertModelList.add(d);
-        d=new CommonModel("coconut water");
+        d=new CommonModel("raisins");
         dessertModelList.add(d);
         d=new CommonModel("black pepper");
+        dessertModelList.add(d);
+        d=new CommonModel("khuwa");
+        dessertModelList.add(d);
+        d=new CommonModel("bread");
+        dessertModelList.add(d);
+        d=new CommonModel("gram flour");
         dessertModelList.add(d);
         dessertAdapter.notifyDataSetChanged();
     }
@@ -594,6 +615,67 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
 
             }
         }
+        if (position==27) {
+            final CommonModel drinkModel28 = dessertModelList.get(position);
+            String text1 = editText.getText().toString();
+            String text2 = drinkModel28.getName() + ", ";
+            String text = text1 + text2;
+            editText.setText(text);
+            if (count == 0) {
+                text = text.replace(text2, "");
+                editText.setText(text);
+
+
+            }
+        }
+        String finalList = editText.getText().toString();
+        DrinksModel d1 =new DrinksModel(finalList);
+        inputDessert.add(d1);
+
+        sbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Gson gson = new Gson();
+                final String newDataArray = gson.toJson(inputDessert);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, dessert_url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+//                                    JSONObject jsonObject = new JSONObject(response);
+//                                    String success = jsonObject.getString("flag");
+                                    final String result = response.toString();
+                                    Log.d("response","result: " +result);
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                error.getMessage();
+
+                            }
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("ingredients_array", newDataArray); // array is a key which will be used in server side
+
+
+                        return params;
+                    }
+                };
+//                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+//                requestQueue.add(stringRequest);
+                Vconnection.getnInstance(getApplicationContext()).addRequestQue(stringRequest);
+            }
+
+
+        });
 
 
 

@@ -19,14 +19,14 @@ public class FirstPage extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_first_page);
-        //button=(Button) findViewById(R.id.startbtn);
-//        //button.setOnClickListener(new View.OnClickListener() {
-//                                      @Override
-//                                      public void onClick(View view) {
-//                                          Intent intent= new Intent(FirstPage.this,Login.class);
-//                                          startActivity(intent);
-//                                      }
-//                                  }
-//        );
+        button=(Button) findViewById(R.id.startbtn);
+        button.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          Intent intent= new Intent(FirstPage.this,Login.class);
+                                          startActivity(intent);
+                                      }
+                                  }
+        );
     }
 }

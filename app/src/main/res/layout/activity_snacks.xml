@@ -84,15 +84,14 @@
 
             android:hint="Select desired ingredients"
             android:textColor="@color/dimgray"
-            android:focusable="true"
             android:theme="@style/EdittextTheme"/>
 
             <ImageButton
-                android:id="@+id/searchDrinks"
+                android:id="@+id/searchSnacks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_search"
-                android:background="@drawable/btn_statechg"
+                android:background="@drawable/searchbutton_bg"
 
                 android:gravity="center"
 
