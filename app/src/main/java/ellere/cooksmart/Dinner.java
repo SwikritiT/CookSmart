@@ -127,94 +127,94 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         });
     }
     private void prepareDinner(){
-        CommonModel d = new CommonModel("chicken breast");
+        CommonModel d = new CommonModel("chicken breast"); //0
         dinnerModelList.add(d);
-        d=new CommonModel("onion");
+        d=new CommonModel("onion"); //1
         dinnerModelList.add(d);
-        d=new CommonModel("bell pepper");
+        d=new CommonModel("bell pepper");//2
         dinnerModelList.add(d);
-        d=new CommonModel("green chili");
+        d=new CommonModel("green chili"); //3
         dinnerModelList.add(d);
-        d=new CommonModel("meat masala");
+        d=new CommonModel("meat masala"); //4
         dinnerModelList.add(d);
-        d=new CommonModel("ginger garlic paste");
+        d=new CommonModel("ginger garlic paste"); //5
         dinnerModelList.add(d);
-        d=new CommonModel("flour");
+        d=new CommonModel("flour"); //6
         dinnerModelList.add(d);
-        d=new CommonModel("chicken drumstick");
+        d=new CommonModel("chicken drumstick"); //7
         dinnerModelList.add(d);
-        d=new CommonModel("egg");
+        d=new CommonModel("chicken thigh"); //8
         dinnerModelList.add(d);
-        d=new CommonModel("gram flour");
+        d=new CommonModel("chicken");  //9
         dinnerModelList.add(d);
-        d=new CommonModel("chili powder");
+        d=new CommonModel("chicken broth"); //10
         dinnerModelList.add(d);
-        d=new CommonModel("soya sauce");
+        d=new CommonModel("goat meat"); //11
         dinnerModelList.add(d);
-        d=new CommonModel("yoghurt");
+        d=new CommonModel("egg"); //12
         dinnerModelList.add(d);
-        d=new CommonModel("lemon");
+        d=new CommonModel("gram flour"); //13
         dinnerModelList.add(d);
-        d=new CommonModel("onion");
+        d=new CommonModel("chili powder"); //14
         dinnerModelList.add(d);
-        d=new CommonModel("bell pepper");
+        d=new CommonModel("soya sauce"); //15
         dinnerModelList.add(d);
-        d=new CommonModel("chicken");
+        d=new CommonModel("yoghurt"); //16
         dinnerModelList.add(d);
-        d=new CommonModel("rice");
+        d=new CommonModel("lemon"); //17
         dinnerModelList.add(d);
-        d=new CommonModel("butter");
+
+        d=new CommonModel("rice"); //18
         dinnerModelList.add(d);
-        d=new CommonModel("coriander powder");
+        d=new CommonModel("butter"); //19
         dinnerModelList.add(d);
-        d=new CommonModel("goat meat");
+        d=new CommonModel("coriander powder"); //20
         dinnerModelList.add(d);
-        d=new CommonModel("turmeric");
+        d=new CommonModel("coriander leaves"); //21
         dinnerModelList.add(d);
-        d=new CommonModel("bamboo stick");
+        d=new CommonModel("cinnamon stick"); //22
         dinnerModelList.add(d);
-        d=new CommonModel("paneer");
+
+        d=new CommonModel("turmeric"); //23
         dinnerModelList.add(d);
-        d=new CommonModel("tomato");
+        d=new CommonModel("bamboo stick"); //24
         dinnerModelList.add(d);
-        d=new CommonModel("vinegar");
+        d=new CommonModel("paneer"); //25
         dinnerModelList.add(d);
-        d=new CommonModel("corn flour");
+        d=new CommonModel("tomato");  //26
         dinnerModelList.add(d);
-        d=new CommonModel("daal");
+        d=new CommonModel("vinegar");  //27
         dinnerModelList.add(d);
-        d=new CommonModel("ginger");
+        d=new CommonModel("corn flour");  //28
         dinnerModelList.add(d);
-        d=new CommonModel("garlic");
+        d=new CommonModel("daal");  //29
         dinnerModelList.add(d);
-        d=new CommonModel("ghee");
+        d=new CommonModel("ginger"); //30
         dinnerModelList.add(d);
-        d=new CommonModel("hing");
+        d=new CommonModel("garlic"); //31
         dinnerModelList.add(d);
-        d=new CommonModel("cumin seed");
+        d=new CommonModel("ghee");  //32
         dinnerModelList.add(d);
-        d=new CommonModel("gundruk");
+        d=new CommonModel("hing"); //33
         dinnerModelList.add(d);
-        d=new CommonModel("soyabean");
+        d=new CommonModel("cumin seed"); //34
         dinnerModelList.add(d);
-        d=new CommonModel("noodle");
+        d=new CommonModel("gundruk"); //35
         dinnerModelList.add(d);
-        d=new CommonModel("chicken broth");
+        d=new CommonModel("soyabean"); //36
         dinnerModelList.add(d);
-        d=new CommonModel("potato");
+        d=new CommonModel("noodle"); //37
         dinnerModelList.add(d);
-        d=new CommonModel("sesame powder");
+
+        d=new CommonModel("potato"); //38
         dinnerModelList.add(d);
-        d=new CommonModel("coconut");
+        d=new CommonModel("sesame powder");//39
         dinnerModelList.add(d);
-        d=new CommonModel("coriander leaves");
+        d=new CommonModel("coconut"); //40
         dinnerModelList.add(d);
-        d=new CommonModel("coconut milk");
+        d=new CommonModel("coconut milk"); //41
         dinnerModelList.add(d);
-        d=new CommonModel("chicken thigh");
-        dinnerModelList.add(d);
-        d=new CommonModel("cinnamon stick");
-        dinnerModelList.add(d);
+
         dinnerAdapter.notifyDataSetChanged();
     }
 
@@ -796,6 +796,23 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
 
 
         }
+        if (position==35){
+            final CommonModel drinkModel36=dinnerModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel36.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
+
+
+
+        }
         if (position==36){
             final CommonModel drinkModel37=dinnerModelList.get(position);
             String text1=editText.getText().toString();
@@ -845,6 +862,22 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
             }
 
 
+        }
+        if (position==39){
+            final CommonModel drinkModel40=dinnerModelList.get(position);
+            String text1=editText.getText().toString();
+            String text2=drinkModel40.getName()+", ";
+            String text= text1+text2;
+            editText.setText(text);
+            if(count==0){
+                text=text.replace(text2,"");
+                editText.setText(text);
+
+
+
+            }
+
+
 
         }
         if (position==40){
@@ -860,6 +893,7 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
 
 
             }
+
 
 
         }
@@ -879,11 +913,12 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
 
 
 
+
         }
         if (position==42){
-            final CommonModel drinkModel43=dinnerModelList.get(position);
+            final CommonModel drinkModel143=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel43.getName()+", ";
+            String text2=drinkModel143.getName()+", ";
             String text= text1+text2;
             editText.setText(text);
             if(count==0){
@@ -912,13 +947,11 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
             }
 
 
-
-
         }
         if (position==44){
-            final CommonModel drinkModel145=dinnerModelList.get(position);
+            final CommonModel drinkModel45=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel145.getName()+", ";
+            String text2=drinkModel45.getName()+", ";
             String text= text1+text2;
             editText.setText(text);
             if(count==0){
@@ -932,174 +965,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
 
 
         }
-        if (position==45){
-            final CommonModel drinkModel46=dinnerModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel46.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
 
 
-
-            }
-
-
-        }
-        if (position==46){
-            final CommonModel drinkModel47=dinnerModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel47.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==47){
-            final CommonModel drinkModel48=dinnerModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel48.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==48){
-            final CommonModel drinkModel49=dinnerModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel49.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==49){
-            final CommonModel drinkModel50=dinnerModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel50.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-        }
-        if (position==50){
-            final CommonModel drinkModel51=dinnerModelList.get(position);
-            String text1=editText.getText().toString();
-            String text2=drinkModel51.getName()+", ";
-            String text= text1+text2;
-            editText.setText(text);
-            if(count==0){
-                text=text.replace(text2,"");
-                editText.setText(text);
-
-
-
-            }
-
-
-
-
-        }
-        if (position==51) {
-            final CommonModel drinkModel52 = dinnerModelList.get(position);
-            String text1 = editText.getText().toString();
-            String text2 = drinkModel52.getName() + ", ";
-            String text = text1 + text2;
-            editText.setText(text);
-            if (count == 0) {
-                text = text.replace(text2, "");
-                editText.setText(text);
-
-
-            }
-        }
-        if (position==52) {
-            final CommonModel drinkModel53 = dinnerModelList.get(position);
-            String text1 = editText.getText().toString();
-            String text2 = drinkModel53.getName() + ", ";
-            String text = text1 + text2;
-            editText.setText(text);
-            if (count == 0) {
-                text = text.replace(text2, "");
-                editText.setText(text);
-
-
-            }
-
-        }
-        if (position==53) {
-            final CommonModel drinkModel54 = dinnerModelList.get(position);
-            String text1 = editText.getText().toString();
-            String text2 = drinkModel54.getName() + ", ";
-            String text = text1 + text2;
-            editText.setText(text);
-            if (count == 0) {
-                text = text.replace(text2, "");
-                editText.setText(text);
-
-
-            }
-        }
-        if (position==54) {
-            final CommonModel drinkModel55= dinnerModelList.get(position);
-            String text1 = editText.getText().toString();
-            String text2 = drinkModel55.getName() + ", ";
-            String text = text1 + text2;
-            editText.setText(text);
-            if (count == 0) {
-                text = text.replace(text2, "");
-                editText.setText(text);
-
-
-            }
-        }
-        if (position==55) {
-            final CommonModel drinkModel56 = dinnerModelList.get(position);
-            String text1 = editText.getText().toString();
-            String text2 = drinkModel56.getName() + ", ";
-            String text = text1 + text2;
-            editText.setText(text);
-            if (count == 0) {
-                text = text.replace(text2, "");
-                editText.setText(text);
-
-
-            }
-        }
         String finalList = editText.getText().toString();
         DrinksModel d1 =new DrinksModel(finalList);
         inputDinner.add(d1);
