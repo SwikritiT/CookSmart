@@ -132,7 +132,7 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
     private void prepareCurry(){
         CommonModel d = new CommonModel("taro");
         curryModelList.add(d);
-        d=new CommonModel("peas");
+        d=new CommonModel("pea");
         curryModelList.add(d);
         d=new CommonModel("lemon");
         curryModelList.add(d);
@@ -160,13 +160,13 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
         curryModelList.add(d);
         d=new CommonModel("lentil flour");
         curryModelList.add(d);
-        d=new CommonModel("bamboo shoots");
+        d=new CommonModel("bamboo shoot");
         curryModelList.add(d);
-        d=new CommonModel("black eyed peas");
+        d=new CommonModel("black eyed pea");
         curryModelList.add(d);
-        d=new CommonModel("kidney beans");
+        d=new CommonModel("kidney bean");
         curryModelList.add(d);
-        d=new CommonModel("mustard leaves");
+        d=new CommonModel("mustard leaf");
         curryModelList.add(d);
         d=new CommonModel("besan");
         curryModelList.add(d);

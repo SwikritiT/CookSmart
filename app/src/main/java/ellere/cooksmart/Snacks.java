@@ -142,7 +142,7 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
         snacksModelList.add(d);
         d=new CommonModel("ginger");
         snacksModelList.add(d);
-        d=new CommonModel("green peas");
+        d=new CommonModel("green pea");
         snacksModelList.add(d);
         d=new CommonModel("chicken");
         snacksModelList.add(d);
@@ -160,7 +160,7 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
         snacksModelList.add(d);
         d=new CommonModel("rice");
         snacksModelList.add(d);
-        d=new CommonModel("peanuts");
+        d=new CommonModel("peanut");
         snacksModelList.add(d);
         d=new CommonModel("coriander leaves");
         snacksModelList.add(d);
@@ -172,7 +172,7 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
         snacksModelList.add(d);
         d=new CommonModel("red chilli");
         snacksModelList.add(d);
-        d=new CommonModel("noodles");
+        d=new CommonModel("noodle");
         snacksModelList.add(d);
         d=new CommonModel("cilanto");
         snacksModelList.add(d);
@@ -180,7 +180,7 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
         snacksModelList.add(d);
         d=new CommonModel("carrot");
         snacksModelList.add(d);
-        d=new CommonModel("raddish");
+        d=new CommonModel("radish");
         snacksModelList.add(d);
         snacksAdapter.notifyDataSetChanged();
     }
