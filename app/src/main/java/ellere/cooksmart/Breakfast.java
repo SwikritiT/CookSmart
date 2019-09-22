@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -652,6 +653,9 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
 //                                    String success = jsonObject.getString("flag");
                                     final String result = response.toString();
                                     Log.d("response","result: " +result);
+                                    Intent intent = new Intent(Breakfast.this, Drinks_homepage.class);
+
+                                   startActivity(intent);
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
