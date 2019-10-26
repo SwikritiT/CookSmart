@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/viewBg"
-    tools:context="ellere.cooksmart.Drinks_homepage"
+    tools:context="ellere.cooksmart.Breakfast_homepage"
     tools:showIn="@layout/breakfast_homepage">
 
     <android.support.v7.widget.RecyclerView

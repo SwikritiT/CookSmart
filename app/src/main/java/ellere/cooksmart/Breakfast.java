@@ -16,10 +16,10 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -27,8 +27,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Breakfast extends AppCompatActivity implements CommonClickListener{
-    String breakfast_url = BASE_URL+"drinks.php";
+    String url = BASE_URL+"breakfast.php";
     private RecyclerView recyclerView;
     private CommonAdapter breakfastAdapter;
     private List<CommonModel> breakfastModelList;
@@ -644,18 +645,20 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
             public void onClick(View view) {
                 Gson gson = new Gson();
                 final String newDataArray = gson.toJson(inputBreakfast);
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, breakfast_url,
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 try {
-//                                    JSONObject jsonObject = new JSONObject(response);
+                                    //                                    JSONObject jsonObject = new JSONObject(response);
 //                                    String success = jsonObject.getString("flag");
                                     final String result = response.toString();
                                     Log.d("response","result: " +result);
-                                    Intent intent = new Intent(Breakfast.this, Drinks_homepage.class);
+                                    Intent intent = new Intent(Breakfast.this, Breakfast_homepage.class);
+                                    startActivity(intent);
 
-                                   startActivity(intent);
+
+
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
