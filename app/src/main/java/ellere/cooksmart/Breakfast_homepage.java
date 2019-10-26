@@ -13,7 +13,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,8 +27,8 @@ import static ellere.cooksmart.API_creator.BASE_URL;
  * Created by swikriti on 9/8/2019.
  */
 
-public class Drinks_homepage extends AppCompatActivity {
-    String drinks_url = BASE_URL+"viewRecipe.php";
+public class Breakfast_homepage extends AppCompatActivity {
+    String breakfast_url = BASE_URL+"viewRecipe.php";
     List<RecipeModel> recipeModelList;
     RecyclerView recyclerView;
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class Drinks_homepage extends AppCompatActivity {
         * Then we have a Response Listener and a Error Listener
         * In response listener we will get the JSON response as a String
         * */
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, drinks_url,
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, breakfast_url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -61,18 +60,22 @@ public class Drinks_homepage extends AppCompatActivity {
                         progressDialog.dismiss();
                         try {
                             final String result = response.toString();
+                            int i =0;
                             Log.d("response","result1: " +result);
                             JSONObject jsonObject=new JSONObject(response);
                             JSONArray jsonArray=jsonObject.getJSONArray("response_list");
-                            for (int i = 0; i < jsonArray.length(); i++) {
+                            while(i<jsonArray.length()) {
 
                                 //getting product object from json array
                                 JSONObject recipes = jsonArray.getJSONObject(i);
-                                String name=recipes.getString("recipe_name");
-                                String image_path=recipes.getString("picture_link");
+                                String name=recipes.getString("name");
+                                String image_path=recipes.getString("link");
 
                                 //adding the product to product list
+                                RecipeModel recipeModel=new RecipeModel(name,image_path);
                                 recipeModelList.add(new RecipeModel(image_path,name));
+                                i++;
+
                             }
                             recyclerView = (RecyclerView) findViewById(R.id.recipes_recycler_view);
                             LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -81,8 +84,9 @@ public class Drinks_homepage extends AppCompatActivity {
                             recyclerView.setLayoutManager(layoutManager);
 
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
-                            RecipeAdapter recipeAdapter = new RecipeAdapter(Drinks_homepage.this, recipeModelList);
+                            RecipeAdapter recipeAdapter = new RecipeAdapter(Breakfast_homepage.this, recipeModelList);
                             recyclerView.setAdapter(recipeAdapter);
+                            //recipeAdapter.recipeDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

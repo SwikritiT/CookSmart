@@ -19,7 +19,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-    }
+        mavenCentral()
+        maven { url 'https://maven.google.com'}
+        }
 }
 
 task clean(type: Delete) {

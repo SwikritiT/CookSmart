@@ -43,7 +43,7 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Drinks extends AppCompatActivity implements CommonClickListener {
-    String drinks_url = BASE_URL+"drinks.php";
+    String drinks_url = BASE_URL+"drinks1.php";
     private RecyclerView recyclerView;
     private CommonAdapter drinksAdapter;
     private List<CommonModel> drinksModelList;
