@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -30,12 +33,16 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 public class Breakfast_homepage extends AppCompatActivity {
     String breakfast_url = BASE_URL+"viewRecipe.php";
     List<RecipeModel> recipeModelList;
+    private Animation animationUp, animationDown;
     RecyclerView recyclerView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breakfast_homepage);
 
         recipeModelList=new ArrayList<>();
+        animationUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        animationDown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
 
 
 
@@ -56,7 +63,7 @@ public class Breakfast_homepage extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                       // Log.d("response",response);
+                        // Log.d("response",response);
                         progressDialog.dismiss();
                         try {
                             final String result = response.toString();
@@ -70,10 +77,13 @@ public class Breakfast_homepage extends AppCompatActivity {
                                 JSONObject recipes = jsonArray.getJSONObject(i);
                                 String name=recipes.getString("name");
                                 String image_path=recipes.getString("link");
+                                String category=recipes.getString("categories");
+                                String ingredients=recipes.getString("ingredient");
+                                String instructions=recipes.getString("instruction");
 
                                 //adding the product to product list
-                                RecipeModel recipeModel=new RecipeModel(name,image_path);
-                                recipeModelList.add(new RecipeModel(image_path,name));
+                                RecipeModel recipeModel=new RecipeModel(image_path,name,category,ingredients,instructions);
+                                recipeModelList.add(new RecipeModel(image_path,name,category,ingredients,instructions));
                                 i++;
 
                             }
@@ -84,7 +94,7 @@ public class Breakfast_homepage extends AppCompatActivity {
                             recyclerView.setLayoutManager(layoutManager);
 
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
-                            RecipeAdapter recipeAdapter = new RecipeAdapter(Breakfast_homepage.this, recipeModelList);
+                            RecipeAdapter recipeAdapter = new RecipeAdapter(Breakfast_homepage.this, recipeModelList,animationUp,animationDown);
                             recyclerView.setAdapter(recipeAdapter);
                             //recipeAdapter.recipeDataSetChanged();
                         } catch (JSONException e) {
