@@ -48,7 +48,7 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
     private List<CommonModel> snacksModelList;
     private EditText editText;
     private Button button;
-    private List<DrinksModel> inputSnacks;
+    private List<BreakfastModel> inputSnacks;
     private ImageButton sbutton;
     private CommonClickListener drinksClickListener;
     private LinearLayout linearLayout;
@@ -641,7 +641,7 @@ public class Snacks extends AppCompatActivity implements CommonClickListener {
             }
         }
         String finalList = editText.getText().toString();
-        DrinksModel d1 =new DrinksModel(finalList);
+        BreakfastModel d1 =new BreakfastModel(finalList);
         inputSnacks.add(d1);
 
         sbutton.setOnClickListener(new View.OnClickListener() {

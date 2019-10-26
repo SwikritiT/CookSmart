@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -15,7 +16,6 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -41,11 +41,11 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Curry extends AppCompatActivity implements CommonClickListener{
-    String curry_url = BASE_URL+"drinks.php";
+    String curry_url = BASE_URL+"Curry.php";
     private RecyclerView recyclerView;
     private CommonAdapter curryAdapter;
     private List<CommonModel> curryModelList;
-    private List<DrinksModel> inputCurry;
+    private List<BreakfastModel> inputCurry;
     private ImageButton sbutton;
     private Toolbar dtoolbar;
     private EditText editText;
@@ -209,9 +209,11 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
         if (position==1){
             final CommonModel drinkModel2=curryModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel2.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel2.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputCurry.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -226,9 +228,11 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
         if (position==2){
             final CommonModel drinkModel3=curryModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel3.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel3.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputCurry.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -242,9 +246,12 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
         if (position==3){
             final CommonModel drinkModel4=curryModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel4.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel4.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputCurry.add(d);
+
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -628,7 +635,7 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
             }
         }
         String finalList = editText.getText().toString();
-        DrinksModel d1 =new DrinksModel(finalList);
+        BreakfastModel d1 =new BreakfastModel(finalList);
         inputCurry.add(d1);
 
         sbutton.setOnClickListener(new View.OnClickListener() {
@@ -645,6 +652,8 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
 //                                    String success = jsonObject.getString("flag");
                                     final String result = response.toString();
                                     Log.d("response","result: " +result);
+                                    Intent intent = new Intent(Curry.this, Curry_homepage.class);
+                                    startActivity(intent);
 
                                 } catch (Exception e) {
                                     e.printStackTrace();

@@ -77,13 +77,13 @@ public class Breakfast_homepage extends AppCompatActivity {
                                 JSONObject recipes = jsonArray.getJSONObject(i);
                                 String name=recipes.getString("name");
                                 String image_path=recipes.getString("link");
-                                String category=recipes.getString("categories");
+                                //String category=recipes.getString("categories");
                                 String ingredients=recipes.getString("ingredient");
                                 String instructions=recipes.getString("instruction");
 
                                 //adding the product to product list
-                                RecipeModel recipeModel=new RecipeModel(image_path,name,category,ingredients,instructions);
-                                recipeModelList.add(new RecipeModel(image_path,name,category,ingredients,instructions));
+                                RecipeModel recipeModel=new RecipeModel(image_path,name,ingredients,instructions);
+                                recipeModelList.add(new RecipeModel(image_path,name,ingredients,instructions));
                                 i++;
 
                             }

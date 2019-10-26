@@ -4,11 +4,11 @@ package ellere.cooksmart;
  * Created by swikriti on 9/5/2019.
  */
 
-public class DrinksModel {
+public class BreakfastModel {
 
         private String name;
-        public DrinksModel(){}
-        public DrinksModel(String name){
+        public BreakfastModel(){}
+        public BreakfastModel(String name){
             this.name=name;}
         public String getName(){
             return name;

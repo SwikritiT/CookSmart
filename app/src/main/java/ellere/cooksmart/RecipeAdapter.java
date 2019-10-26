@@ -33,20 +33,27 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
         TextView recipeName;
-        TextView recipeCategory;
+        //TextView recipeCategory;
         TextView recipeInstructions;
         TextView recipeIngredients;
         ImageView recipeImg;
+//        TextView recipeCategory;
+//        TextView recipeIngredient;
+//        TextView recipeInstruction;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
             recipeName=itemView.findViewById(R.id.recipe_name);
             recipeImg=itemView.findViewById(R.id.recipes_thumbnail);
-            recipeCategory=itemView.findViewById(R.id.recipe_category);
+            //recipeCategory=itemView.findViewById(R.id.recipe_category);
             recipeIngredients=itemView.findViewById(R.id.recipe_ingredients);
             recipeInstructions=itemView.findViewById(R.id.recipe_instructions);
 
         }
+    }
+
+    public interface OnNoteListener{
+        void onNoteClick(int position);
     }
     @NonNull
     @Override
@@ -63,17 +70,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                 .load(recipeModel.getRecipeImage())
                 .into(recipeViewHolder.recipeImg);
         recipeViewHolder.recipeName.setText(recipeModel.getRecipeName());
-        recipeViewHolder.recipeCategory.setText(recipeModel.getRecipeCategory());
+        //recipeViewHolder.recipeCategory.setText(recipeModel.getRecipeCategory());
         recipeViewHolder.recipeIngredients.setText(recipeModel.getRecipeIngredients());
         recipeViewHolder.recipeInstructions.setText(recipeModel.getRecipeInstructions());
-        recipeViewHolder.recipeCategory.setVisibility(View.GONE);
+        //recipeViewHolder.recipeCategory.setVisibility(View.GONE);
         recipeViewHolder.recipeIngredients.setVisibility(View.GONE);
         recipeViewHolder.recipeInstructions.setVisibility(View.GONE);
         recipeViewHolder.recipeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (recipeViewHolder.recipeCategory.isShown() && recipeViewHolder.recipeIngredients.isShown() && recipeViewHolder.recipeInstructions.isShown()) {
-                    recipeViewHolder.recipeCategory.startAnimation(animationUp);
+                if ( recipeViewHolder.recipeIngredients.isShown() && recipeViewHolder.recipeInstructions.isShown()) {
+                    //recipeViewHolder.recipeCategory.startAnimation(animationUp);
                     recipeViewHolder.recipeIngredients.startAnimation(animationUp);
                     recipeViewHolder.recipeInstructions.startAnimation(animationUp);
 
@@ -85,7 +92,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
                         @Override
                         public void onFinish() {
-                            recipeViewHolder.recipeCategory.setVisibility(View.GONE);
+                            //recipeViewHolder.recipeCategory.setVisibility(View.GONE);
                             recipeViewHolder.recipeIngredients.setVisibility(View.GONE);
                             recipeViewHolder.recipeInstructions.setVisibility(View.GONE);
                         }
@@ -95,10 +102,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                     //recipeViewHolder.showMore.setText(context.getString(R.string.show));
                     //holder.showMore.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.arrow_down, 0);
                 } else {
-                    recipeViewHolder.recipeCategory.setVisibility(View.VISIBLE);
+                    //recipeViewHolder.recipeCategory.setVisibility(View.VISIBLE);
                     recipeViewHolder.recipeIngredients.setVisibility(View.VISIBLE);
                     recipeViewHolder.recipeInstructions.setVisibility(View.VISIBLE);
-                    recipeViewHolder.recipeCategory.startAnimation(animationDown);
+                    //recipeViewHolder.recipeCategory.startAnimation(animationDown);
                     recipeViewHolder.recipeIngredients.startAnimation(animationDown);
                     recipeViewHolder.recipeInstructions.startAnimation(animationDown);
 

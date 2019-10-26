@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -47,7 +48,7 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
     private RecyclerView recyclerView;
     private CommonAdapter dinnerAdapter;
     private List<CommonModel> dinnerModelList;
-    private List<DrinksModel> inputDinner;
+    private List<BreakfastModel> inputDinner;
     private ImageButton sbutton;
     private EditText editText;
     private Button button;
@@ -242,9 +243,11 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==1){
             final CommonModel drinkModel2=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel2.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel2.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDinner.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -259,8 +262,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==2){
             final CommonModel drinkModel3=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel3.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel3.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -275,8 +278,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==3){
             final CommonModel drinkModel4=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel4.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel4.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -292,8 +295,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==4){
             final CommonModel drinkModel5=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel5.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel5.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -309,8 +312,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==5){
             final CommonModel drinkModel6=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel6.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel6.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -326,8 +329,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==6){
             final CommonModel drinkModel7=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel7.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel7.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -343,8 +346,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==7){
             final CommonModel drinkModel8=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel8.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel8.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -359,8 +362,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==8){
             final CommonModel drinkModel9=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel9.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel9.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -376,8 +379,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==9){
             final CommonModel drinkModel10=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel10.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel10.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -393,8 +396,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==10){
             final CommonModel drinkModel11=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel11.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel11.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -410,8 +413,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==11){
             final CommonModel drinkModel12=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel12.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel12.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -426,8 +429,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==12){
             final CommonModel drinkModel13=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel13.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel13.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -443,8 +446,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==13){
             final CommonModel drinkModel14=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel14.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel14.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -460,8 +463,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==14){
             final CommonModel drinkModel15=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel15.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel15.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -478,8 +481,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==15){
             final CommonModel drinkModel16=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel16.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel16.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -495,8 +498,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==16){
             final CommonModel drinkModel17=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel17.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel17.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -511,8 +514,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==17){
             final CommonModel drinkModel18=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel18.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel18.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -528,8 +531,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==18){
             final CommonModel drinkModel19=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel19.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel19.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -545,8 +548,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==19){
             final CommonModel drinkModel20=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel20.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel20.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -562,8 +565,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==20){
             final CommonModel drinkModel21=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel21.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel21.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -579,8 +582,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==21){
             final CommonModel drinkModel22=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel22.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel22.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -597,8 +600,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==22) {
             final CommonModel drinkModel23 = dinnerModelList.get(position);
             String text1 = editText.getText().toString();
-            String text2 = drinkModel23.getName() + ", ";
-            String text = text1 + text2;
+            String text2 = drinkModel23.getName() ;
+            String text = text1 + text2+", ";
             editText.setText(text);
             if (count == 0) {
                 text = text.replace(text2, "");
@@ -610,8 +613,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==23) {
             final CommonModel drinkModel24 = dinnerModelList.get(position);
             String text1 = editText.getText().toString();
-            String text2 = drinkModel24.getName() + ", ";
-            String text = text1 + text2;
+            String text2 = drinkModel24.getName() ;
+            String text = text1 + text2+", ";
             editText.setText(text);
             if (count == 0) {
                 text = text.replace(text2, "");
@@ -624,8 +627,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==24) {
             final CommonModel drinkModel25 = dinnerModelList.get(position);
             String text1 = editText.getText().toString();
-            String text2 = drinkModel25.getName() + ", ";
-            String text = text1 + text2;
+            String text2 = drinkModel25.getName();
+            String text = text1 + text2+", ";
             editText.setText(text);
             if (count == 0) {
                 text = text.replace(text2, "");
@@ -637,8 +640,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==25) {
             final CommonModel drinkModel26 = dinnerModelList.get(position);
             String text1 = editText.getText().toString();
-            String text2 = drinkModel26.getName() + ", ";
-            String text = text1 + text2;
+            String text2 = drinkModel26.getName() ;
+            String text = text1 + text2+", ";
             editText.setText(text);
             if (count == 0) {
                 text = text.replace(text2, "");
@@ -650,8 +653,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==26) {
             final CommonModel drinkModel27 = dinnerModelList.get(position);
             String text1 = editText.getText().toString();
-            String text2 = drinkModel27.getName() + ", ";
-            String text = text1 + text2;
+            String text2 = drinkModel27.getName() ;
+            String text = text1 + text2+", ";
             editText.setText(text);
             if (count == 0) {
                 text = text.replace(text2, "");
@@ -663,8 +666,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==27){
             final CommonModel drinkModel28=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel28.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel28.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -682,8 +685,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==28){
             final CommonModel drinkModel29=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel29.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel29.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -699,8 +702,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==29){
             final CommonModel drinkModel30=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel30.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel30.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -715,8 +718,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==30){
             final CommonModel drinkModel31=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel31.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel31.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -732,8 +735,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==31){
             final CommonModel drinkModel32=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel32.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel32.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -749,8 +752,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==32){
             final CommonModel drinkModel33=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel33.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel33.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -766,8 +769,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==33){
             final CommonModel drinkModel34=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel34.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel34.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -783,8 +786,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==34){
             final CommonModel drinkModel35=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel35.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel35.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -799,8 +802,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==35){
             final CommonModel drinkModel36=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel36.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel36.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -816,8 +819,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==36){
             final CommonModel drinkModel37=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel37.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel37.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -833,8 +836,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==37){
             final CommonModel drinkModel38=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel38.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel38.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -850,8 +853,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==38){
             final CommonModel drinkModel39=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel39.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel39.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -866,8 +869,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==39){
             final CommonModel drinkModel40=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel40.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel40.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -883,8 +886,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==40){
             final CommonModel drinkModel41=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel41.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel41.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -900,8 +903,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==41){
             final CommonModel drinkModel42=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel42.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel42.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -918,8 +921,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==42){
             final CommonModel drinkModel143=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel143.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel143.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -935,8 +938,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==43){
             final CommonModel drinkModel44=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel44.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel44.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -951,8 +954,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
         if (position==44){
             final CommonModel drinkModel45=dinnerModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel45.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel45.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
             if(count==0){
                 text=text.replace(text2,"");
@@ -968,7 +971,7 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
 
 
         String finalList = editText.getText().toString();
-        DrinksModel d1 =new DrinksModel(finalList);
+        BreakfastModel d1 =new BreakfastModel(finalList);
         inputDinner.add(d1);
 
         sbutton.setOnClickListener(new View.OnClickListener() {
@@ -985,6 +988,8 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
 //                                    String success = jsonObject.getString("flag");
                                     final String result = response.toString();
                                     Log.d("response","result: " +result);
+                                    Intent intent = new Intent(Dinner.this, Dinner_homepage.class);
+                                    startActivity(intent);
 
                                 } catch (Exception e) {
                                     e.printStackTrace();

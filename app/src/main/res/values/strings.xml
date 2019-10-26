@@ -37,4 +37,8 @@
     <string name="coconut_milk">Coconut Milk</string>
     <string name="coconut_water">Coconut Water</string>
     <string name="black_pepper">Black Pepper</string>
+    <string name="ingre"><b>Ingredients:</b></string>
+    <string name="inst"><b>Instructions:</b></string>
+
+
 </resources>

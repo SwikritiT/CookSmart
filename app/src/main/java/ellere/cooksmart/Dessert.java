@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -41,11 +42,11 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Dessert extends AppCompatActivity implements CommonClickListener{
-    String dessert_url = BASE_URL+"drinks.php";
+    String dessert_url = BASE_URL+"dessert.php";
     private RecyclerView recyclerView;
     private CommonAdapter dessertAdapter;
     private List<CommonModel> dessertModelList;
-    private List<DrinksModel> inputDessert;
+    private List<BreakfastModel> inputDessert;
     private ImageButton sbutton;
     private EditText editText;
     private Toolbar dtoolbar;
@@ -178,9 +179,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==0){
             final CommonModel drinkModel1=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel1.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel1.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -197,9 +200,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==1){
             final CommonModel drinkModel2=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel2.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel2.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -214,9 +219,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==2){
             final CommonModel drinkModel3=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel3.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel3.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -230,9 +237,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==3){
             final CommonModel drinkModel4=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel4.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel4.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -247,9 +256,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==4){
             final CommonModel drinkModel5=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel5.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel5.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -264,9 +275,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==5){
             final CommonModel drinkModel6=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel6.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel6.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -281,9 +294,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==6){
             final CommonModel drinkModel7=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel7.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel7.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -298,9 +313,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==7){
             final CommonModel drinkModel8=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel8.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel8.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -314,9 +331,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==8){
             final CommonModel drinkModel9=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel9.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel9.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -331,9 +350,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==9){
             final CommonModel drinkModel10=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel10.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel10.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -348,9 +369,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==10){
             final CommonModel drinkModel11=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel11.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel11.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -365,9 +388,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==11){
             final CommonModel drinkModel12=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel12.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel12.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -381,9 +406,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==12){
             final CommonModel drinkModel13=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel13.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel13.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -398,9 +425,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==13){
             final CommonModel drinkModel14=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel14.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel14.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -415,9 +444,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==14){
             final CommonModel drinkModel15=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel15.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel15.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -433,9 +464,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==15){
             final CommonModel drinkModel16=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel16.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel16.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -450,9 +483,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==16){
             final CommonModel drinkModel17=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel17.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel17.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -466,9 +501,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==17){
             final CommonModel drinkModel18=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel18.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel18.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -483,9 +520,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==18){
             final CommonModel drinkModel19=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel19.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel19.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -500,9 +539,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==19){
             final CommonModel drinkModel20=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel20.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel20.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -517,9 +558,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==20){
             final CommonModel drinkModel21=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel21.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel21.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -534,9 +577,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==21){
             final CommonModel drinkModel22=dessertModelList.get(position);
             String text1=editText.getText().toString();
-            String text2=drinkModel22.getName()+", ";
-            String text= text1+text2;
+            String text2=drinkModel22.getName();
+            String text= text1+text2+", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2,"");
                 editText.setText(text);
@@ -552,9 +597,11 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==22) {
             final CommonModel drinkModel23 = dessertModelList.get(position);
             String text1 = editText.getText().toString();
-            String text2 = drinkModel23.getName() + ", ";
-            String text = text1 + text2;
+            String text2 = drinkModel23.getName() ;
+            String text = text1 + text2+ ", ";
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
@@ -568,6 +615,8 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel24.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
@@ -582,6 +631,8 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel25.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
@@ -595,6 +646,8 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel26.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
@@ -608,6 +661,8 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel27.getName() + ", ";
             String text = text1 + text2;
             editText.setText(text);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
@@ -618,9 +673,13 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         if (position==27) {
             final CommonModel drinkModel28 = dessertModelList.get(position);
             String text1 = editText.getText().toString();
-            String text2 = drinkModel28.getName() + ", ";
-            String text = text1 + text2;
+            String text2 = drinkModel28.getName();
+            String text = text1 + text2+",";
             editText.setText(text);
+            //DessertModel d=new DessertModel(text2);
+            //inputDessert.add(d);
+            BreakfastModel d=new BreakfastModel(text2);
+            inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2, "");
                 editText.setText(text);
@@ -629,7 +688,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             }
         }
         String finalList = editText.getText().toString();
-        DrinksModel d1 =new DrinksModel(finalList);
+        BreakfastModel d1 =new BreakfastModel(finalList);
         inputDessert.add(d1);
 
         sbutton.setOnClickListener(new View.OnClickListener() {
@@ -646,6 +705,8 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
 //                                    String success = jsonObject.getString("flag");
                                     final String result = response.toString();
                                     Log.d("response","result: " +result);
+                                    Intent intent = new Intent(Dessert.this, Dessert_homepage.class);
+                                    startActivity(intent);
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
