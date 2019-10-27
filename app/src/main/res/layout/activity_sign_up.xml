@@ -7,21 +7,23 @@
     tools:context="ellere.cooksmart.SignUp"
     android:orientation="vertical"
     android:background="@color/white">
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/logo"
 
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="25dp"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/logo"-->
+        <!--android:layout_width="250dp"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:layout_marginLeft="25dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginTop="0dp"-->
+        <!--app:srcCompat="@drawable/logo" />-->
+
     <LinearLayout
         android:id="@+id/linlay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_login"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="130dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp">
 
@@ -35,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Username"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
 
                 android:textAllCaps="true"
                 android:textSize="15sp"
@@ -118,6 +120,99 @@
                 android:layout_marginTop="0dp"/>
 
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="full name"
+
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
+
+                />
+            <EditText
+                android:id="@+id/fullname"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginTop="0dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
+
+                />
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginTop="0dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="phone-number"
+
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
+
+                />
+            <EditText
+                android:id="@+id/phonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginTop="0dp"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 
@@ -126,7 +221,7 @@
         android:id="@+id/signup_btn"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="SignUp"
         android:background="@drawable/btn_bg"
         android:fontFamily="sans-serif-medium"

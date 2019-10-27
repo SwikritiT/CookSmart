@@ -39,7 +39,8 @@ public class Login extends AppCompatActivity {
     int PRIVATE_MODE = 0;
    // SessionManager sessionManager;
 
-    SharedPreferences sharedpreferences;
+    SharedPreferences pref;
+    Intent intent;
     String reg_url = BASE_URL+"login.php";
 
 
@@ -51,7 +52,12 @@ public class Login extends AppCompatActivity {
         loginbtn=(Button) findViewById(R.id.login_btn);
         user=(EditText) findViewById(R.id.username_login);
         pass=(EditText) findViewById(R.id.password_login);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        pref = getSharedPreferences("user_details",MODE_PRIVATE);
+       intent = new Intent(Login.this,HomePage.class);
+        if(pref.contains("username") && pref.contains("password")){
+            startActivity(intent);
+        }
         loginbtn.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
@@ -94,20 +100,13 @@ public class Login extends AppCompatActivity {
                             String success =jsonObject.getString("flag");
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")){
-//                                SharedPreferences.Editor editor = sharedpreferences.edit();
-//
-//                                editor.putString(UserName, username);
-//                                editor.putString(Password, password);
-//                                //editor.putString(Email, e);
-//                                editor.apply();
-                                //sessionManager.createSession(username,password);
-
-
-
-                                    //Log.d("test",">>>>1"+textView1.getText());
+                                 SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("username",username);
+                                editor.putString("password",password);
+                                editor.commit();
                                     Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
 
-                                    //if(pref.contains("username")&& pref.contains("password"))
+
 
 
 

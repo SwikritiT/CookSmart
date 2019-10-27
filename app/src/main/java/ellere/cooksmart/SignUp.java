@@ -1,6 +1,7 @@
 package ellere.cooksmart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,12 +30,14 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 
 public class SignUp extends AppCompatActivity {
     Button signupbtn;
-    EditText user, pass, confirmpass;
+    EditText user, pass, confirmpass,fname,email,phonenumber;
     String username,password,confirmpassword;
     String reg_url = BASE_URL+"signup.php";
     private Pattern pattern;
     private Matcher matcher;
     private static final String USERNAME_PATTERN = ".*[&%$#@!~]+.*";
+    SharedPreferences pref;
+    Intent intent;
 
 
     @Override
@@ -45,7 +48,15 @@ public class SignUp extends AppCompatActivity {
         user = (EditText) findViewById(R.id.username_signup);
         pass = (EditText) findViewById(R.id.password_signup);
         confirmpass = (EditText) findViewById(R.id.confirmpassword_signup);
+        fname=(EditText)findViewById(R.id.fullname);
+        email=(EditText)findViewById(R.id.email);
+        phonenumber=(EditText)findViewById(R.id.phonenumber);
         pattern = Pattern.compile(USERNAME_PATTERN);
+        pref = getSharedPreferences("user_details",MODE_PRIVATE);
+        intent = new Intent(SignUp.this,HomePage.class);
+        if(pref.contains("username") && pref.contains("password")){
+            startActivity(intent);
+        }
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +101,10 @@ public class SignUp extends AppCompatActivity {
                             String success = jsonObject.getString("flag");
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")) {
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("username",username);
+                                editor.putString("password",password);
+                                editor.commit();
                                 Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SignUp.this, HomePage.class);
                                 startActivity(intent);
