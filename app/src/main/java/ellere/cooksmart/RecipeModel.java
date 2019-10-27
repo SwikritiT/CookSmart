@@ -8,15 +8,13 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 
 public class RecipeModel {
     private String recipeName;
-    private String recipeCategory;
    private String  recipeIngredients;
     private String recipeInstructions;
 
     private String recipeImage;
-    RecipeModel(String recipeImage,String recipeName,String recipeCategory,String recipeIngredients,String recipeInstructions){
+    RecipeModel(String recipeImage,String recipeName,String recipeIngredients,String recipeInstructions){
         this.recipeImage=recipeImage;
         this.recipeName=recipeName;
-        this.recipeCategory=recipeCategory;
         this.recipeIngredients=recipeIngredients;
         this.recipeInstructions=recipeInstructions;
     }
@@ -32,9 +30,7 @@ public class RecipeModel {
 //    public void setRecipeName(String recipeName){
 //        this.recipeName=recipeName;
 //    }
-public  String getRecipeCategory(){
-    return recipeCategory;
-}
+
     public  String getRecipeIngredients(){
         return recipeIngredients;
     }

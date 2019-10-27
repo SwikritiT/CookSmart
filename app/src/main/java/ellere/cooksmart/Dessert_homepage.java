@@ -1,6 +1,5 @@
 package ellere.cooksmart;
 
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,23 +27,23 @@ import java.util.List;
 import static ellere.cooksmart.API_creator.BASE_URL;
 
 /**
- * Created by swikriti on 9/8/2019.
+ * Created by swikriti on 10/27/2019.
  */
 
-public class Breakfast_homepage extends AppCompatActivity {
-    private Toolbar toolbar;
+public class Dessert_homepage extends AppCompatActivity {
+    Toolbar toolbar;
     String breakfast_url = BASE_URL+"viewRecipe.php";
     List<RecipeModel> recipeModelList;
     private Animation animationUp, animationDown;
     RecyclerView recyclerView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.breakfast_homepage);
-        toolbar=(Toolbar)findViewById(R.id.break_tool);
+        setContentView(R.layout.dessert_homepage);
+        toolbar=(Toolbar) findViewById(R.id.des_tool);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null){
-            getSupportActionBar().setTitle("Breakfast");
+            getSupportActionBar().setTitle("Dessert");
 
         }
 
@@ -102,7 +101,7 @@ public class Breakfast_homepage extends AppCompatActivity {
                             recyclerView.setLayoutManager(layoutManager);
 
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
-                            RecipeAdapter recipeAdapter = new RecipeAdapter(Breakfast_homepage.this, recipeModelList,animationUp,animationDown);
+                            RecipeAdapter recipeAdapter = new RecipeAdapter(Dessert_homepage.this, recipeModelList,animationUp,animationDown);
                             recyclerView.setAdapter(recipeAdapter);
                             //recipeAdapter.recipeDataSetChanged();
                         } catch (JSONException e) {

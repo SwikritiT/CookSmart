@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@color/viewBg">
     <include
-        android:id="@+id/break_tool"
+        android:id="@+id/snack_tool"
         layout="@layout/toolbar"/>
 
     <include layout="@layout/recyclerview_recipes" />

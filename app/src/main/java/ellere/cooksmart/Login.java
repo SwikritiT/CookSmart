@@ -30,17 +30,10 @@ import java.util.Map;
 import static ellere.cooksmart.API_creator.BASE_URL;
 
 public class Login extends AppCompatActivity {
-     Button loginbtn, gosignupbtn;
+    Button loginbtn, gosignupbtn;
     EditText user, pass;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String UserName = "nameKey";
-    public static final String Password = "passKey";
-    public static final String Email = "emailKey";
-    int PRIVATE_MODE = 0;
-   // SessionManager sessionManager;
-
-    SharedPreferences sharedpreferences;
     String reg_url = BASE_URL+"login.php";
+    //SessionManager sessionManager;
 
 
     @Override
@@ -51,12 +44,14 @@ public class Login extends AppCompatActivity {
         loginbtn=(Button) findViewById(R.id.login_btn);
         user=(EditText) findViewById(R.id.username_login);
         pass=(EditText) findViewById(R.id.password_login);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+       // sessionManager=new SessionManager(this);
+
         loginbtn.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
                                           String username = user.getText().toString();
                                           String password = pass.getText().toString();
+                                          //sessionManager.createSession(username,password);
 
 
 
@@ -94,13 +89,7 @@ public class Login extends AppCompatActivity {
                             String success =jsonObject.getString("flag");
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")){
-//                                SharedPreferences.Editor editor = sharedpreferences.edit();
 //
-//                                editor.putString(UserName, username);
-//                                editor.putString(Password, password);
-//                                //editor.putString(Email, e);
-//                                editor.apply();
-                                //sessionManager.createSession(username,password);
 
 
 

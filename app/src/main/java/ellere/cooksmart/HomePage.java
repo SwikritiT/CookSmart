@@ -31,6 +31,7 @@ import com.bumptech.glide.Glide;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity implements ClickListener {
@@ -39,6 +40,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     private CategoriesAdapter categoriesAdapter;
     private List<CategoriesModel> categoriesModelList;
     private Context context;
+   // SessionManager sessionManager;
 
    //private static final String EXTRA__ITEM = "image_url";
 //    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME = "image_transition_name";
@@ -50,6 +52,12 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+//        sessionManager=new SessionManager(this);
+//        sessionManager.checkLogin();
+     //   HashMap<String,String> user=sessionManager.getUserDetail();
+//        String name=user.get(sessionManager.NAME);
+//        String pass=user.get(sessionManager.PASSWORD);
+
         toolbar=(Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -69,7 +77,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
                     case R.id.setting:
                         Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
                     case R.id.logout:
-                        logout();
+                       // sessionManager.logout();
                         return true;
                     default:
                         return onMenuItemClick(item);
@@ -132,15 +140,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             }
         });
     }
-    public  void logout(){
-        SharedPreferences sharedpreferences = getSharedPreferences(Login.MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.clear();
-        editor.apply();
-        Intent intent=new Intent(HomePage.this,Login.class);
-        startActivity(intent);
-        //((HomePage) context).finish();
-    }
+
     private void prepareCategories(){
         int[] covers= new int[]{
                 R.drawable.breakfast,

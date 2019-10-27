@@ -38,27 +38,28 @@
                 android:id="@+id/recipe_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="15dp"
                 android:paddingLeft="@dimen/categories_title_padding"
                 android:paddingRight="@dimen/categories_title_padding"
-
+                android:layout_marginLeft="110dp"
                 android:textColor="@color/categories_title"
                 android:textSize="18sp"
                 android:clickable="true"
                 android:focusable="true"
                 />
+
            <TextView
-               android:id="@+id/recipe_category"
+               android:id="@+id/ingredients"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_marginLeft="20dp"
                android:layout_marginBottom="5dp"
                android:paddingLeft="@dimen/categories_title_padding"
                android:paddingRight="@dimen/categories_title_padding"
-
                android:textColor="@color/categories_title"
                android:textSize="18sp"
+               android:text="Ingredients:"
+               android:textStyle="bold"
                android:clickable="true"
                android:focusable="true"
                />
@@ -77,14 +78,28 @@
                android:focusable="true"
                />
            <TextView
-               android:id="@+id/recipe_instructions"
+               android:id="@+id/instructions"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_marginLeft="20dp"
                android:layout_marginBottom="5dp"
                android:paddingLeft="@dimen/categories_title_padding"
                android:paddingRight="@dimen/categories_title_padding"
-
+               android:textColor="@color/categories_title"
+               android:textSize="18sp"
+               android:text="Instructions:"
+               android:textStyle="bold"
+               android:clickable="true"
+               android:focusable="true"
+               />
+           <TextView
+               android:id="@+id/recipe_instructions"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="15dp"
+               android:paddingLeft="@dimen/categories_title_padding"
+               android:paddingRight="@dimen/categories_title_padding"
                android:textColor="@color/categories_title"
                android:textSize="18sp"
                android:clickable="true"
