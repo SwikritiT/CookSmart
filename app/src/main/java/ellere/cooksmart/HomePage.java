@@ -64,15 +64,13 @@ public class HomePage extends AppCompatActivity implements ClickListener {
                     case R.id.profile:
                         Intent intent= new Intent(HomePage.this,Profile.class);
                         startActivity(intent);
-                        //Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+
                     case R.id.help:
                         Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.setting:
                         Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
-//                    case R.id.logout:
-//                        logout();
-//                        return true;
+
                     default:
                         return onMenuItemClick(item);
                 }
