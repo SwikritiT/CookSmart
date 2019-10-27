@@ -39,6 +39,8 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     private CategoriesAdapter categoriesAdapter;
     private List<CategoriesModel> categoriesModelList;
     private Context context;
+    SharedPreferences prf;
+    Intent intent;
 
    //private static final String EXTRA__ITEM = "image_url";
 //    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME = "image_transition_name";
@@ -70,6 +72,14 @@ public class HomePage extends AppCompatActivity implements ClickListener {
                         return true;
                     case R.id.setting:
                         Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+
+//                    case R.id.logout:
+//                        prf = getSharedPreferences("user_details",MODE_PRIVATE);
+//                        intent = new Intent(HomePage.this,Login.class);
+//                        SharedPreferences.Editor editor = prf.edit();
+//                        editor.clear();
+//                        editor.commit();
+//                        startActivity(intent);
 
                     default:
                         return onMenuItemClick(item);

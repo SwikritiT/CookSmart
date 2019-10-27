@@ -21,11 +21,11 @@
         android:orderInCategory="100"
         android:title="@string/help"
         apps:showAsAction="never"/>
-    <!--<item-->
-        <!--android:id="@+id/logout"-->
+    <item
+        android:id="@+id/logout"
 
-        <!--android:orderInCategory="100"-->
-        <!--android:title="@string/logout"-->
-        <!--apps:showAsAction="never"/>-->
+        android:orderInCategory="100"
+        android:title="@string/logout"
+        apps:showAsAction="never"/>
 
 </menu>
