@@ -1,5 +1,6 @@
 package ellere.cooksmart;
 
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,23 +28,23 @@ import java.util.List;
 import static ellere.cooksmart.API_creator.BASE_URL;
 
 /**
- * Created by swikriti on 10/27/2019.
+ * Created by swikriti on 9/8/2019.
  */
 
-public class Drinks_homepage extends AppCompatActivity {
-    Toolbar toolbar;
-    String url = BASE_URL+"viewRecipe.php";
+public class Breakfast_homepage extends AppCompatActivity {
+    private Toolbar toolbar;
+    String breakfast_url = BASE_URL+"viewRecipe.php";
     List<RecipeModel> recipeModelList;
     private Animation animationUp, animationDown;
     RecyclerView recyclerView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.drinks_homepage);
-        toolbar=(Toolbar) findViewById(R.id.drinks_tool);
+        setContentView(R.layout.breakfast_homepage);
+        toolbar=(Toolbar)findViewById(R.id.break_tool);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null){
-            getSupportActionBar().setTitle("Drinks");
+            getSupportActionBar().setTitle("Breakfast");
 
         }
 
@@ -67,7 +68,7 @@ public class Drinks_homepage extends AppCompatActivity {
         * Then we have a Response Listener and a Error Listener
         * In response listener we will get the JSON response as a String
         * */
-        StringRequest stringRequest=new StringRequest(Request.Method.GET,url,
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, breakfast_url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -101,7 +102,7 @@ public class Drinks_homepage extends AppCompatActivity {
                             recyclerView.setLayoutManager(layoutManager);
 
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
-                            RecipeAdapter recipeAdapter = new RecipeAdapter(Drinks_homepage.this, recipeModelList,animationUp,animationDown);
+                            RecipeAdapter recipeAdapter = new RecipeAdapter(Breakfast_homepage.this, recipeModelList,animationUp,animationDown);
                             recyclerView.setAdapter(recipeAdapter);
                             //recipeAdapter.recipeDataSetChanged();
                         } catch (JSONException e) {

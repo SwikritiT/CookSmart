@@ -16,10 +16,10 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -27,12 +27,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import static ellere.cooksmart.API_creator.BASE_URL;
@@ -43,7 +45,8 @@ import static ellere.cooksmart.API_creator.count;
  */
 
 public class Breakfast extends AppCompatActivity implements CommonClickListener{
-    String breakfast_url = BASE_URL+"drinks.php";
+    String url = BASE_URL+"breakfast.php";
+
     private RecyclerView recyclerView;
     private CommonAdapter breakfastAdapter;
     private List<CommonModel> breakfastModelList;
@@ -51,6 +54,8 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
     private ImageButton sbutton;
     private EditText editText;
     private Toolbar btoolbar;
+    ListIterator listIterator;
+    static DrinksModel d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +82,7 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
         sbutton=(ImageButton) findViewById(R.id.searchBreakfast);
         breakfastModelList=new ArrayList<>();
         inputBreakfast= new ArrayList<>();
+        listIterator= inputBreakfast.listIterator();
 
         breakfastAdapter= new CommonAdapter(this,breakfastModelList);
         breakfastAdapter.setClickListener(this);
@@ -174,15 +180,17 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
 
     @Override
     public void buttonClicked(View view, int position) {
+
         if (position==0){
             final CommonModel drinkModel1=breakfastModelList.get(position);
             String text1=editText.getText().toString();
             String text2=drinkModel1.getName();
             String text= text1+text2+", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
-            inputBreakfast.add(d);
+            d0=new DrinksModel(text2);
+            inputBreakfast.add(d0);
             if(count==0){
+                inputBreakfast.remove(d0);
                 text=text.replace(text2+", ","");
                 editText.setText(text);
 
@@ -201,9 +209,10 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel2.getName();
             String text= text1+text2+", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
-            inputBreakfast.add(d);
+             d1=new DrinksModel(text2);
+            inputBreakfast.add(d1);
             if(count==0){
+                inputBreakfast.remove(d1);
                 text=text.replace(text2+", ","");
                 editText.setText(text);
 
@@ -220,9 +229,10 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel3.getName();
             String text= text1+text2+", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
-            inputBreakfast.add(d);
+             d2=new DrinksModel(text2);
+            inputBreakfast.add(d2);
             if(count==0){
+                inputBreakfast.remove(d2);
                 text=text.replace(text2+", ","");
                 editText.setText(text);
 
@@ -238,9 +248,11 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel4.getName();
             String text= text1+text2+", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
-            inputBreakfast.add(d);
+            d3=new DrinksModel(text2);
+            inputBreakfast.add(d3);
             if(count==0){
+                listIterator.next();
+                listIterator.remove();
                 text=text.replace(text2+", ","");
                 editText.setText(text);
 
@@ -257,9 +269,10 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel5.getName();
             String text= text1+text2+", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
-            inputBreakfast.add(d);
+            d4=new DrinksModel(text2);
+            inputBreakfast.add(d4);
             if(count==0){
+                inputBreakfast.remove(d4);
                 text=text.replace(text2+", ","");
                 editText.setText(text);
 
@@ -644,18 +657,20 @@ public class Breakfast extends AppCompatActivity implements CommonClickListener{
             public void onClick(View view) {
                 Gson gson = new Gson();
                 final String newDataArray = gson.toJson(inputBreakfast);
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, breakfast_url,
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 try {
-//                                    JSONObject jsonObject = new JSONObject(response);
+                                    //                                    JSONObject jsonObject = new JSONObject(response);
 //                                    String success = jsonObject.getString("flag");
                                     final String result = response.toString();
                                     Log.d("response","result: " +result);
-                                    Intent intent = new Intent(Breakfast.this, Drinks_homepage.class);
+                                    Intent intent = new Intent(Breakfast.this, Breakfast_homepage.class);
+                                    startActivity(intent);
 
-                                   startActivity(intent);
+
+
 
                                 } catch (Exception e) {
                                     e.printStackTrace();

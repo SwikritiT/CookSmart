@@ -30,7 +30,7 @@ import static ellere.cooksmart.API_creator.BASE_URL;
  * Created by swikriti on 10/27/2019.
  */
 
-public class Drinks_homepage extends AppCompatActivity {
+public class Snacks_homepage extends AppCompatActivity {
     Toolbar toolbar;
     String url = BASE_URL+"viewRecipe.php";
     List<RecipeModel> recipeModelList;
@@ -38,12 +38,12 @@ public class Drinks_homepage extends AppCompatActivity {
     RecyclerView recyclerView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.drinks_homepage);
-        toolbar=(Toolbar) findViewById(R.id.drinks_tool);
+        setContentView(R.layout.snacks_homepage);
+        toolbar=(Toolbar) findViewById(R.id.cur_tool);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null){
-            getSupportActionBar().setTitle("Drinks");
+            getSupportActionBar().setTitle("Snacks");
 
         }
 
@@ -67,7 +67,7 @@ public class Drinks_homepage extends AppCompatActivity {
         * Then we have a Response Listener and a Error Listener
         * In response listener we will get the JSON response as a String
         * */
-        StringRequest stringRequest=new StringRequest(Request.Method.GET,url,
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -101,7 +101,7 @@ public class Drinks_homepage extends AppCompatActivity {
                             recyclerView.setLayoutManager(layoutManager);
 
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
-                            RecipeAdapter recipeAdapter = new RecipeAdapter(Drinks_homepage.this, recipeModelList,animationUp,animationDown);
+                            RecipeAdapter recipeAdapter = new RecipeAdapter(Snacks_homepage.this, recipeModelList,animationUp,animationDown);
                             recyclerView.setAdapter(recipeAdapter);
                             //recipeAdapter.recipeDataSetChanged();
                         } catch (JSONException e) {

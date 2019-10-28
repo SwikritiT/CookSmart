@@ -632,9 +632,9 @@ public class Drinks extends AppCompatActivity implements CommonClickListener {
 //                                    String success = jsonObject.getString("flag");
                                     final String result = response.toString();
                                     Log.d("response","result: " +result);
-//                                    Intent intent = new Intent(Drinks.this, Drinks_homepage.class);
-//
-//                                    startActivity(intent);
+                                    Intent intent = new Intent(Drinks.this, Drinks_homepage.class);
+
+                                    startActivity(intent);
 
                                 } catch (Exception e) {
                                     e.printStackTrace();

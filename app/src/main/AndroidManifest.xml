@@ -20,10 +20,11 @@
         android:theme="@style/AppMaterialTheme">
         <activity android:name=".HomePage">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".Breakfast">
         <!--<intent-filter>-->
@@ -58,7 +59,30 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".Drinks_homepage" />
+        <activity android:name=".Breakfast_homepage">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
+        <activity android:name=".Curry_homepage">
+
+        </activity>
+        <activity android:name=".Drinks_homepage">
+
+        </activity>
+        <activity android:name=".Snacks_homepage">
+
+        </activity>
+        <activity android:name=".Dessert_homepage">
+
+        </activity>
+        <activity android:name=".Dinner_homepage">
+
+        </activity>
+
 
     </application>
 
