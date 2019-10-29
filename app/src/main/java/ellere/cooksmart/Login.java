@@ -103,7 +103,7 @@ public class Login extends AppCompatActivity {
                                  SharedPreferences.Editor editor = pref.edit();
                                 editor.putString("username",username);
                                 editor.putString("password",password);
-                                editor.commit();
+                                editor.apply();
                                     Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
 
 

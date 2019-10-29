@@ -30,8 +30,8 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 
 public class SignUp extends AppCompatActivity {
     Button signupbtn;
-    EditText user, pass, confirmpass,fname,email,phonenumber;
-    String username,password,confirmpassword;
+    EditText user, pass, confirmpass,fullname_edittext,email_edittext,phonenumber_edittext;
+    String username,password,confirmpassword, email,fullname,phonenumber;
     String reg_url = BASE_URL+"signup.php";
     private Pattern pattern;
     private Matcher matcher;
@@ -48,9 +48,9 @@ public class SignUp extends AppCompatActivity {
         user = (EditText) findViewById(R.id.username_signup);
         pass = (EditText) findViewById(R.id.password_signup);
         confirmpass = (EditText) findViewById(R.id.confirmpassword_signup);
-        fname=(EditText)findViewById(R.id.fullname);
-        email=(EditText)findViewById(R.id.email);
-        phonenumber=(EditText)findViewById(R.id.phonenumber);
+        fullname_edittext=(EditText)findViewById(R.id.fullname);
+        email_edittext=(EditText)findViewById(R.id.email);
+        phonenumber_edittext=(EditText)findViewById(R.id.phonenumber);
         pattern = Pattern.compile(USERNAME_PATTERN);
         pref = getSharedPreferences("user_details",MODE_PRIVATE);
         intent = new Intent(SignUp.this,HomePage.class);
@@ -62,8 +62,11 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                  username = user.getText().toString().trim();
                 password = pass.getText().toString().trim();
+                email=email_edittext.getText().toString().trim();
+                fullname=fullname_edittext.getText().toString().trim();
+                phonenumber=phonenumber_edittext.getText().toString().trim();
                 confirmpassword = confirmpass.getText().toString().trim();
-                if (username.equals("") || password.equals("") || confirmpassword.equals("")) {
+                if (username.equals("") || password.equals("") || confirmpassword.equals("") || fullname.equals("")|| email.equals("") || phonenumber.equals("")) {
                     Toast.makeText(SignUp.this, "Fill up the field properly", Toast.LENGTH_SHORT).show();
 
                 } else if (password.length() < 8) {
@@ -80,7 +83,7 @@ public class SignUp extends AppCompatActivity {
                 }
 //                 If EditText is not empty and CheckEditText = True then this block will execute.
                 else {
-                    UserRegisterFunction(username,password);
+                    UserRegisterFunction(username,password,fullname,email,phonenumber);
 
 
                 }
@@ -90,7 +93,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    public void UserRegisterFunction(final String username, final String password) {
+    public void UserRegisterFunction(final String username, final String password,final String fullname, final String email,final String phonenumber) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, reg_url,
                 new Response.Listener<String>() {
                     @Override
@@ -104,6 +107,9 @@ public class SignUp extends AppCompatActivity {
                                 SharedPreferences.Editor editor = pref.edit();
                                 editor.putString("username",username);
                                 editor.putString("password",password);
+                                editor.putString("email",email);
+                                editor.putString("fullname",fullname);
+                                editor.putString("phonenumber",phonenumber);
                                 editor.commit();
                                 Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SignUp.this, HomePage.class);
@@ -132,6 +138,9 @@ public class SignUp extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username);
                 params.put("password", password);
+                params.put("fullname",fullname);
+                params.put("email",email);
+                params.put("phonenumber",phonenumber);
 
                 return params;
             }

@@ -70,8 +70,8 @@ public class HomePage extends AppCompatActivity implements ClickListener {
                     case R.id.help:
                         Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.setting:
-                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+//                    case R.id.setting:
+//                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
 
 //                    case R.id.logout:
 //                        prf = getSharedPreferences("user_details",MODE_PRIVATE);

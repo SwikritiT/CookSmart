@@ -64,13 +64,13 @@
             <TextView
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
-
+                android:id="@+id/fullname"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:textSize="15sp"
-                android:text="Chandler Muriel Bing"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -84,9 +84,10 @@
                 android:layout_height="36dp"
                 android:src="@drawable/email"/>
             <TextView
+                android:id="@+id/email"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
-                android:text="chan77777@gmail.com"
+
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,6 +109,7 @@
                 android:layout_height="36dp"
                 android:src="@drawable/phone"/>
             <TextView
+                android:id="@+id/phone"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
                 android:layout_gravity="center_vertical"
@@ -115,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:textSize="15sp"
-                android:text="+977 9803234231"/>
+               />
         </LinearLayout>
         <!--<LinearLayout-->
             <!--android:layout_width="wrap_content"-->
@@ -129,7 +131,7 @@
                 android:id="@+id/logoutBtn"
                 android:layout_width="80dp"
                 android:layout_height="39dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="55dp"
                 android:text="Logout"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="sans-serif-medium"
