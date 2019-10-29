@@ -9,7 +9,10 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 	
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
-	$query="INSERT INTO user(username,password) VALUES('$user','$pass')";
+	$full=$_POST['fullname'];
+	$email=$_POST['email'];
+	$phone=$_POST['phonenumber'];
+	$query="INSERT INTO `users`(user_name,password,fullname,email,phonenumber) VALUES('$user','$pass','$full','$email','$phone')";
 	$result=mysqli_query($con,$query);
 	if($result)
 	{
