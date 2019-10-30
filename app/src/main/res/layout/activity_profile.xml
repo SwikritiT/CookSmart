@@ -8,11 +8,11 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     >
-
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="250dp">
-
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -34,13 +34,13 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                                android:fontFamily="sans-serif-light"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="21sp"
                 android:layout_weight="0.23" />
         </LinearLayout>
-
+        
     </RelativeLayout>
 
 
@@ -64,13 +64,13 @@
             <TextView
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
-
+                android:id="@+id/fullname"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:textSize="15sp"
-                android:text="Chandler Muriel Bing"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -84,9 +84,10 @@
                 android:layout_height="36dp"
                 android:src="@drawable/email"/>
             <TextView
+                android:id="@+id/email"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
-                android:text="chan77777@gmail.com"
+
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,6 +109,7 @@
                 android:layout_height="36dp"
                 android:src="@drawable/phone"/>
             <TextView
+                android:id="@+id/phone"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
                 android:layout_gravity="center_vertical"
@@ -115,59 +117,59 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:textSize="15sp"
-                android:text="+977 9803234231"/>
+               />
         </LinearLayout>
         <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="63dp"-->
-        <!--android:layout_marginTop="20dp"-->
-        <!--android:orientation="vertical">-->
-        <!--&lt;!&ndash;android:layout_gravity="center_horizontal">&ndash;&gt;-->
-        <!--&lt;!&ndash;android:background="@drawable/logoutcircle_background">&ndash;&gt;-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="63dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:orientation="vertical">-->
+            <!--&lt;!&ndash;android:layout_gravity="center_horizontal">&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/logoutcircle_background">&ndash;&gt;-->
 
-        <ImageButton
-            android:id="@+id/logoutBtn"
-            android:layout_width="80dp"
-            android:layout_height="39dp"
-            android:layout_marginTop="25dp"
-            android:text="Logout"
-            android:background="@drawable/btn_bg"
-            android:fontFamily="sans-serif-medium"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
+            <ImageButton
+                android:id="@+id/logoutBtn"
+                android:layout_width="80dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="55dp"
+                android:text="Logout"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="70dp"
+                android:paddingRight="70dp"
 
-            android:textSize="16sp"
-            android:clickable="true"
-            android:src="@drawable/logout1"
-            android:layout_gravity="center_horizontal"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:src="@drawable/logout1"
+                android:layout_gravity="center_horizontal"
 
-            />
-        <!--<ImageView-->
-        <!--android:layout_width="70sp"-->
-        <!--android:id="@+id/logoutBtn"-->
-        <!--android:gravity="center"-->
-        <!--android:layout_height="70sp"-->
-        <!--android:src="@drawable/logout"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:padding="15dp"-->
+                />
+            <!--<ImageView-->
+                <!--android:layout_width="70sp"-->
+            <!--android:id="@+id/logoutBtn"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_height="70sp"-->
+                <!--android:src="@drawable/logout"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:padding="15dp"-->
 
 
-        <!--android:clickable="true"-->
-        <!--android:focusable="true"-->
+            <!--android:clickable="true"-->
+                <!--android:focusable="true"-->
 
-        <!--/>-->
+                <!--/>-->
 
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="25dp"-->
-        <!--android:fontFamily="sans-serif-light"-->
-        <!--android:text="logout"-->
-        <!--android:textAlignment="center"-->
-        <!--android:textColor="@color/black"-->
-        <!--android:textSize="15sp" />-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="25dp"-->
+                <!--android:fontFamily="sans-serif-light"-->
+                <!--android:text="logout"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="15sp" />-->
         <!--</LinearLayout>-->
 
 
-    </LinearLayout>
 </LinearLayout>
+    </LinearLayout>
