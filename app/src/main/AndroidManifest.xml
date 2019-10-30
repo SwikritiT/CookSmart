@@ -82,6 +82,7 @@
         <activity android:name=".Dinner_homepage">
 
         </activity>
+        <activity android:name=".Profile" />
 
 
     </application>
