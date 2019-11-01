@@ -30,14 +30,14 @@ import java.util.Map;
 import static ellere.cooksmart.API_creator.BASE_URL;
 
 public class Login extends AppCompatActivity {
-     Button loginbtn, gosignupbtn;
+    Button loginbtn, gosignupbtn;
     EditText user, pass;
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String UserName = "nameKey";
     public static final String Password = "passKey";
     public static final String Email = "emailKey";
     int PRIVATE_MODE = 0;
-   // SessionManager sessionManager;
+    // SessionManager sessionManager;
 
     SharedPreferences pref;
     Intent intent;
@@ -54,30 +54,30 @@ public class Login extends AppCompatActivity {
         pass=(EditText) findViewById(R.id.password_login);
 
         pref = getSharedPreferences("user_details",MODE_PRIVATE);
-       intent = new Intent(Login.this,HomePage.class);
+        intent = new Intent(Login.this,HomePage.class);
         if(pref.contains("username") && pref.contains("password")){
             startActivity(intent);
         }
         loginbtn.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View view) {
-                                          String username = user.getText().toString();
-                                          String password = pass.getText().toString();
+                                        @Override
+                                        public void onClick(View view) {
+                                            String username = user.getText().toString();
+                                            String password = pass.getText().toString();
 
 
 
-                                          if (username.equals("") || password.equals("")) {
-                                              Toast.makeText(getBaseContext(), "Fill up all the field properly", Toast.LENGTH_SHORT).show();
-                                              return;
-                                          }
-                                          else
-                                          {
+                                            if (username.equals("") || password.equals("")) {
+                                                Toast.makeText(getBaseContext(), "Fill up all the field properly", Toast.LENGTH_SHORT).show();
+                                                return;
+                                            }
+                                            else
+                                            {
 
-                                              UserLoginFunction(username, password);
-                                          }
+                                                UserLoginFunction(username, password);
+                                            }
 
-                                      }
-                                  }
+                                        }
+                                    }
         );
 
         gosignupbtn.setOnClickListener(new View.OnClickListener() {
@@ -100,11 +100,11 @@ public class Login extends AppCompatActivity {
                             String success =jsonObject.getString("flag");
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")){
-                                 SharedPreferences.Editor editor = pref.edit();
+                                SharedPreferences.Editor editor = pref.edit();
                                 editor.putString("username",username);
                                 editor.putString("password",password);
                                 editor.apply();
-                                    Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
 
 
 
@@ -112,8 +112,8 @@ public class Login extends AppCompatActivity {
 
                                 Intent intent = new Intent(Login.this, HomePage.class);
 
-                                    startActivity(intent);
-                                }
+                                startActivity(intent);
+                            }
 
                             else
                             {

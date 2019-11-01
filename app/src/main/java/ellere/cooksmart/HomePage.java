@@ -174,66 +174,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     }
 
 
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    @Override
-//    public void itemClicked(int position, ImageView imageView, TextView textView) {
-//        if(position==0){
-//            Intent intent = new Intent(HomePage.this, Breakfast.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-////            intent.putExtra(EXTRA__ITEM,imageItem);
-////            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-////                intent.putExtra("BreakfastTransitionName", ViewCompat.getTransitionName(shareImageView));
-//////            Pair<View, String> mPair1 = new Pair<View, String>(shareImageView, ViewCompat.getTransitionName(shareImageView));
-//////            Pair<View, String> mPair2 = new Pair<View, String>(shareTextView, ViewCompat.getTransitionName(shareTextView));
-//////            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,mPair1,mPair2);
-////
-////
-////                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-////                        this,
-////                        shareImageView,
-////                        ViewCompat.getTransitionName(shareImageView));
-////                startActivity(intent, options.toBundle());
-////            }
-//
-//
-//
-//
-//
-//
-//
-//
-//        }
-//        if(position==1){
-//            Intent intent = new Intent(HomePage.this, Snacks.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==2){
-//            Intent intent = new Intent(HomePage.this, Dinner.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==3){
-//            Intent intent = new Intent(HomePage.this, Curry.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==4){
-//            Intent intent = new Intent(HomePage.this, Dessert.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==5){
-//            Intent intent = new Intent(HomePage.this, Drinks.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//
-//    }
 
-    //    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    @Override
     public void itemClicked(View view, int position) {
         if(position==0){
             Intent intent = new Intent(HomePage.this, Breakfast.class);
