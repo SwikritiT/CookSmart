@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -31,6 +32,7 @@ import static ellere.cooksmart.API_creator.BASE_URL;
  */
 
 public class Breakfast_homepage extends AppCompatActivity {
+    private Toolbar toolbar;
     String breakfast_url = BASE_URL+"viewRecipe.php";
     List<RecipeModel> recipeModelList;
     private Animation animationUp, animationDown;
@@ -38,6 +40,13 @@ public class Breakfast_homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breakfast_homepage);
+        toolbar=(Toolbar)findViewById(R.id.break_tool);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Breakfast");
+
+        }
 
         recipeModelList=new ArrayList<>();
         animationUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
@@ -77,7 +86,6 @@ public class Breakfast_homepage extends AppCompatActivity {
                                 JSONObject recipes = jsonArray.getJSONObject(i);
                                 String name=recipes.getString("name");
                                 String image_path=recipes.getString("link");
-                                //String category=recipes.getString("categories");
                                 String ingredients=recipes.getString("ingredient");
                                 String instructions=recipes.getString("instruction");
 

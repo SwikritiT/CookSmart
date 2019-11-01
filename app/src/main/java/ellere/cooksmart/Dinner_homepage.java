@@ -1,11 +1,12 @@
 package ellere.cooksmart;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -25,14 +26,26 @@ import java.util.List;
 
 import static ellere.cooksmart.API_creator.BASE_URL;
 
+/**
+ * Created by swikriti on 10/27/2019.
+ */
+
 public class Dinner_homepage extends AppCompatActivity {
+    Toolbar toolbar;
     String breakfast_url = BASE_URL+"viewRecipe.php";
     List<RecipeModel> recipeModelList;
     private Animation animationUp, animationDown;
     RecyclerView recyclerView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.breakfast_homepage);
+        setContentView(R.layout.dinner_homepage);
+        toolbar=(Toolbar) findViewById(R.id.din_tool);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Dinner");
+
+        }
 
         recipeModelList=new ArrayList<>();
         animationUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
@@ -72,7 +85,6 @@ public class Dinner_homepage extends AppCompatActivity {
                                 JSONObject recipes = jsonArray.getJSONObject(i);
                                 String name=recipes.getString("name");
                                 String image_path=recipes.getString("link");
-                                //String category=recipes.getString("categories");
                                 String ingredients=recipes.getString("ingredient");
                                 String instructions=recipes.getString("instruction");
 

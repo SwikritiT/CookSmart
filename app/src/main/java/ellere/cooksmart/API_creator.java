@@ -5,7 +5,7 @@ package ellere.cooksmart;
  */
 
 public class API_creator {
-    public static String BASE_URL="http://192.168.1.66/cooksmart/";
+    public static String BASE_URL="http://192.168.1.75/cooksmart/";
     public static int count=0;
     public static String instruction="Instructions:\n";
     public static String ingredient ="Ingredients:\n";

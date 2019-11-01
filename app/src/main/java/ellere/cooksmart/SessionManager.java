@@ -44,34 +44,34 @@
 //            return sharedPreferences.getBoolean(LOGIN, false);
 //        }
 //
-////        public void checkLogin(){
-////
-////            if (!this.isLoggin()){
-////                Intent i = new Intent(context, Login.class);
-////                context.startActivity(i);
-////                ((HomePage) context).finish();
-////            }
-////        }
-////
-////        public HashMap<String, String> getUserDetail(){
-////
-////            HashMap<String, String> user = new HashMap<>();
-////            user.put(NAME, sharedPreferences.getString(NAME, null));
-////            user.put(PASSWORD, sharedPreferences.getString(PASSWORD, null));
-////            //user.put(ID, sharedPreferences.getString(ID, null));
-////
-////            return user;
-////        }
-////
-////        public void logout(){
-////
-////            editor.clear();
-////            editor.commit();
-////            Intent i = new Intent(context, Login.class);
-////            context.startActivity(i);
-////            ((HomePage) context).finish();
-////
-////        }
+//        public void checkLogin(){
+//
+//            if (!this.isLoggin()){
+//                Intent i = new Intent(context, Login.class);
+//                context.startActivity(i);
+//                ((HomePage) context).finish();
+//            }
+//        }
+//
+//        public HashMap<String, String> getUserDetail(){
+//
+//            HashMap<String, String> user = new HashMap<>();
+//            user.put(NAME, sharedPreferences.getString(NAME, null));
+//            user.put(PASSWORD, sharedPreferences.getString(PASSWORD, null));
+//            //user.put(ID, sharedPreferences.getString(ID, null));
+//
+//            return user;
+//        }
+//
+//        public void logout(){
+//
+//            editor.clear();
+//            editor.commit();
+//            Intent i = new Intent(context, Login.class);
+//            context.startActivity(i);
+//            ((HomePage) context).finish();
+//
+//        }
 //
 //    }
 //

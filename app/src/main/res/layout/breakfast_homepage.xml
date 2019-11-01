@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/viewBg">
-    <include layout="@layout/toolbar"/>
+    <include
+        android:id="@+id/break_tool"
+        layout="@layout/toolbar"/>
 
     <include layout="@layout/recyclerview_recipes" />
 

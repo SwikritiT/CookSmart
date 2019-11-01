@@ -1,9 +1,6 @@
 package ellere.cooksmart;
 
 import static ellere.cooksmart.API_creator.BASE_URL;
-import static ellere.cooksmart.API_creator.ingredient;
-
-import static ellere.cooksmart.API_creator.instruction;
 
 /**
  * Created by swikriti on 9/20/2019.
@@ -11,7 +8,6 @@ import static ellere.cooksmart.API_creator.instruction;
 
 public class RecipeModel {
     private String recipeName;
-    //private String recipeCategory;
    private String  recipeIngredients;
     private String recipeInstructions;
 
@@ -19,7 +15,6 @@ public class RecipeModel {
     RecipeModel(String recipeImage,String recipeName,String recipeIngredients,String recipeInstructions){
         this.recipeImage=recipeImage;
         this.recipeName=recipeName;
-        //this.recipeCategory=recipeCategory;
         this.recipeIngredients=recipeIngredients;
         this.recipeInstructions=recipeInstructions;
     }
@@ -35,14 +30,12 @@ public class RecipeModel {
 //    public void setRecipeName(String recipeName){
 //        this.recipeName=recipeName;
 //    }
-//public  String getRecipeCategory(){
-//    return recipeCategory;
-//}
+
     public  String getRecipeIngredients(){
-        return  ingredient +recipeIngredients;
+        return recipeIngredients;
     }
     public  String getRecipeInstructions(){
-        return instruction+recipeInstructions;
+        return recipeInstructions;
     }
 
 }
