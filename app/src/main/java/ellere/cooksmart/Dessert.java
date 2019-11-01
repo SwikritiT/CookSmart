@@ -1,8 +1,11 @@
 package ellere.cooksmart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -46,7 +50,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
     private RecyclerView recyclerView;
     private CommonAdapter dessertAdapter;
     private List<CommonModel> dessertModelList;
-    private List<DrinksModel> inputDessert;
+    private List<IngredientsModel> inputDessert;
     private ImageButton sbutton;
     private EditText editText;
     private Toolbar dtoolbar;
@@ -74,6 +78,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
         editText.setFocusable(false);
         dessertModelList=new ArrayList<>();
         sbutton=(ImageButton) findViewById(R.id.searchDessert);
+
         inputDessert=new ArrayList<>();
         dessertAdapter= new CommonAdapter(this,dessertModelList);
         dessertAdapter.setClickListener(this);
@@ -94,6 +99,20 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+    private  boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+
+        finish();
+        startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
     }
 
     private void initCollapsingToolbar() {
@@ -182,7 +201,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel1.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -203,7 +222,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel2.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -222,7 +241,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel3.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -240,7 +259,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel4.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -259,7 +278,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel5.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -278,7 +297,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel6.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -297,7 +316,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel7.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -316,7 +335,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel8.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -334,7 +353,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel9.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -353,7 +372,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel10.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -372,7 +391,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel11.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -391,7 +410,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel12.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -409,7 +428,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel13.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -428,7 +447,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel14.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -447,7 +466,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel15.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -467,7 +486,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel16.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -486,7 +505,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel17.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -504,7 +523,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel18.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -523,7 +542,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel19.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -542,7 +561,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel20.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -561,7 +580,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel21.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -580,7 +599,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2=drinkModel22.getName();
             String text= text1+text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if(count==0){
                 text=text.replace(text2+ ", ","");
@@ -600,7 +619,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel23.getName();
             String text = text1 + text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2+ ", ", "");
@@ -615,7 +634,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel24.getName();
             String text = text1 + text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2+ ", ", "");
@@ -631,7 +650,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel25.getName();
             String text = text1 + text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2+ ", ", "");
@@ -646,7 +665,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel26.getName();
             String text = text1 + text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2+ ", ", "");
@@ -661,7 +680,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel27.getName() ;
             String text = text1 + text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2+ ", ", "");
@@ -676,7 +695,7 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             String text2 = drinkModel28.getName();
             String text = text1 + text2+ ", ";
             editText.setText(text);
-            DrinksModel d=new DrinksModel(text2);
+            IngredientsModel d=new IngredientsModel(text2);
             inputDessert.add(d);
             if (count == 0) {
                 text = text.replace(text2+ ", ", "");
@@ -686,52 +705,69 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             }
         }
 //        String finalList = editText.getText().toString();
-//        DrinksModel d1 =new DrinksModel(finalList);
+//        IngredientsModel d1 =new IngredientsModel(finalList);
 //        inputDessert.add(d1);
 
         sbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Gson gson = new Gson();
-                final String newDataArray = gson.toJson(inputDessert);
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, dessert_url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
+                if (isNetworkAvailable()){
+                if (editText.length() == 0 || inputDessert.size() < 2 || inputDessert.size() > 8) {
+                    if (editText.length() == 0) {
+
+                        Toast.makeText(Dessert.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
+                    } else if (inputDessert.size() < 2) {
+                        Toast.makeText(Dessert.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
+                    } else if (inputDessert.size() > 8) {
+                        Toast.makeText(Dessert.this, " Too many ingredients.Select less than eight", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Gson gson = new Gson();
+                    final String newDataArray = gson.toJson(inputDessert);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, dessert_url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
 //                                    JSONObject jsonObject = new JSONObject(response);
 //                                    String success = jsonObject.getString("flag");
-                                    final String result = response.toString();
-                                    Log.d("response","result: " +result);
-                                    Intent intent = new Intent(Dessert.this, Dessert_homepage.class);
-                                    startActivity(intent);
+                                        final String result = response.toString();
+                                        Log.d("response", "result: " + result);
+                                        Intent intent = new Intent(Dessert.this, Dessert_homepage.class);
+                                        startActivity(intent);
 
 
-                                } catch (Exception e) {
-                                    e.printStackTrace();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
                                 }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                error.printStackTrace();
-                                error.getMessage();
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    error.printStackTrace();
+                                    error.getMessage();
 
-                            }
-                        }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("ingredients_array", newDataArray); // array is a key which will be used in server side
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("ingredients_array", newDataArray); // array is a key which will be used in server side
 
 
-                        return params;
-                    }
-                };
+                            return params;
+                        }
+                    };
 //                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 //                requestQueue.add(stringRequest);
-                Vconnection.getnInstance(getApplicationContext()).addRequestQue(stringRequest);
+                    Vconnection.getnInstance(getApplicationContext()).addRequestQue(stringRequest);
+
+                }
+                }
+                else {
+                    Toast.makeText(Dessert.this,"Please check your internet connection",Toast.LENGTH_SHORT).show();
+                }
             }
 
 
