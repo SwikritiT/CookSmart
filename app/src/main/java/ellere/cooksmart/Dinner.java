@@ -1084,15 +1084,13 @@ public class Dinner extends AppCompatActivity implements CommonClickListener {
             @Override
             public void onClick(View view) {
                 if(isNetworkAvailable()){
-                if(editText.length()==0 || inputDinner.size()<2 || inputDinner.size()>8) {
+                if(editText.length()==0 || inputDinner.size()<2) {
                     if (editText.length()==0 ){
 
                         Toast.makeText(Dinner.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
                     }
                     else if (inputDinner.size() < 2) {
                         Toast.makeText(Dinner.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
-                    } else if (inputDinner.size() > 8) {
-                        Toast.makeText(Dinner.this, " Too many ingredients.Select less than eight", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {

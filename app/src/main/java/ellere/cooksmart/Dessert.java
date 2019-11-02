@@ -712,14 +712,12 @@ public class Dessert extends AppCompatActivity implements CommonClickListener{
             @Override
             public void onClick(View view) {
                 if (isNetworkAvailable()){
-                if (editText.length() == 0 || inputDessert.size() < 2 || inputDessert.size() > 8) {
+                if (editText.length() == 0 || inputDessert.size() < 2) {
                     if (editText.length() == 0) {
 
                         Toast.makeText(Dessert.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
                     } else if (inputDessert.size() < 2) {
                         Toast.makeText(Dessert.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
-                    } else if (inputDessert.size() > 8) {
-                        Toast.makeText(Dessert.this, " Too many ingredients.Select less than eight", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Gson gson = new Gson();

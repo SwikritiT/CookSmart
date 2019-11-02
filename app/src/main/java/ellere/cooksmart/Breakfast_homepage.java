@@ -141,7 +141,7 @@ public class Breakfast_homepage extends AppCompatActivity {
                                         });
 
                                 builder1.setNegativeButton(
-                                        "Cancle",
+                                        "Cancel",
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();

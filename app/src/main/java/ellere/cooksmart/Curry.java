@@ -708,16 +708,13 @@ public class Curry extends AppCompatActivity implements CommonClickListener{
             @Override
             public void onClick(View view) {
                 if(isNetworkAvailable()){
-                if (editText.length() == 0 || inputCurry.size() < 2 || inputCurry.size() > 8) {
+                if (editText.length() == 0 || inputCurry.size() < 2) {
                     if (editText.length() == 0) {
 
                         Toast.makeText(Curry.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
                     } else if (inputCurry.size() < 2) {
                         Toast.makeText(Curry.this, "Please select two or more ingredients", Toast.LENGTH_SHORT).show();
-                    } else if (inputCurry.size() > 8) {
-                        Toast.makeText(Curry.this, " Too many ingredients.Select less than eight", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
+                    } } else {
                     Gson gson = new Gson();
                     final String newDataArray = gson.toJson(inputCurry);
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, curry_url,
