@@ -1,7 +1,10 @@
 package ellere.cooksmart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -57,40 +60,49 @@ public class SignUp extends AppCompatActivity {
         if(pref.contains("username") && pref.contains("password")){
             startActivity(intent);
         }
+
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 username = user.getText().toString().trim();
-                password = pass.getText().toString().trim();
-                email=email_edittext.getText().toString().trim();
-                fullname=fullname_edittext.getText().toString().trim();
-                phonenumber=phonenumber_edittext.getText().toString().trim();
-                confirmpassword = confirmpass.getText().toString().trim();
-                if (username.equals("") || password.equals("") || confirmpassword.equals("") || fullname.equals("")|| email.equals("") || phonenumber.equals("")) {
-                    Toast.makeText(SignUp.this, "Fill up the field properly", Toast.LENGTH_SHORT).show();
+                if (isNetworkAvailable()) {
+                    username = user.getText().toString().trim();
+                    password = pass.getText().toString().trim();
+                    email = email_edittext.getText().toString().trim();
+                    fullname = fullname_edittext.getText().toString().trim();
+                    phonenumber = phonenumber_edittext.getText().toString().trim();
+                    confirmpassword = confirmpass.getText().toString().trim();
+                    if (username.equals("") || password.equals("") || confirmpassword.equals("") || fullname.equals("") || email.equals("") || phonenumber.equals("")) {
+                        Toast.makeText(SignUp.this, "Fill up the field properly", Toast.LENGTH_SHORT).show();
 
-                } else if (password.length() < 8) {
-                     Toast.makeText(SignUp.this, "Password too short...", Toast.LENGTH_SHORT).show();
+                    } else if (password.length() < 8) {
+                        Toast.makeText(SignUp.this, "Password too short...", Toast.LENGTH_SHORT).show();
 
-                }
-                else if (!password.equals(confirmpassword)) {
-                    Toast.makeText(SignUp.this, "Password donot match...", Toast.LENGTH_SHORT).show();
-                }
-
-
-                else if (!validate(username)) {
-                    Toast.makeText(SignUp.this, "special characters not allowed in username...", Toast.LENGTH_SHORT).show();
-                }
+                    } else if (!password.equals(confirmpassword)) {
+                        Toast.makeText(SignUp.this, "Password donot match...", Toast.LENGTH_SHORT).show();
+                    } else if (!validate(username)) {
+                        Toast.makeText(SignUp.this, "special characters not allowed in username...", Toast.LENGTH_SHORT).show();
+                    }
 //                 If EditText is not empty and CheckEditText = True then this block will execute.
-                else {
-                    UserRegisterFunction(username,password,fullname,email,phonenumber);
+                    else {
+                        UserRegisterFunction(username, password, fullname, email, phonenumber);
 
 
+                    }
+                }
+                 else
+                {
+                    Toast.makeText(SignUp.this,"Please check your internet connection",Toast.LENGTH_SHORT).show();
                 }
 
             }
 
         });
+    }
+    private  boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void UserRegisterFunction(final String username, final String password,final String fullname, final String email,final String phonenumber) {

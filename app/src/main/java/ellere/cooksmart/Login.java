@@ -3,6 +3,8 @@ package ellere.cooksmart;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,19 +63,22 @@ public class Login extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
-                                            String username = user.getText().toString();
-                                            String password = pass.getText().toString();
+                                            if (isNetworkAvailable()) {
+                                                String username = user.getText().toString();
+                                                String password = pass.getText().toString();
 
 
+                                                if (username.equals("") || password.equals("")) {
+                                                    Toast.makeText(getBaseContext(), "Fill up all the field properly", Toast.LENGTH_SHORT).show();
+                                                    return;
+                                                } else {
 
-                                            if (username.equals("") || password.equals("")) {
-                                                Toast.makeText(getBaseContext(), "Fill up all the field properly", Toast.LENGTH_SHORT).show();
-                                                return;
+                                                    UserLoginFunction(username, password);
+                                                }
                                             }
-                                            else
+                                             else
                                             {
-
-                                                UserLoginFunction(username, password);
+                                                Toast.makeText(Login.this,"Please check your internet connection",Toast.LENGTH_SHORT).show();
                                             }
 
                                         }
@@ -87,6 +92,12 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    private  boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void UserLoginFunction(final String username,  final String password){

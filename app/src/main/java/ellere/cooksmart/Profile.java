@@ -86,6 +86,7 @@ public class Profile extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("profile", "onResponse: "+response);
                         try {
                             final String result = response.toString();
                             int i = 0;
