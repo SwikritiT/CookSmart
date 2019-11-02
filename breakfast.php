@@ -9,12 +9,27 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 	$inputDrinksList=$_POST['ingredients_array'];
 
 	 $drinksArray=json_decode($inputDrinksList,true);
-	 //array_unique($inputDrinksList);
+	 
 	 $arringredient=array();
 	 $arringredientname=array();
-	 print_r($drinksArray);
-	 foreach ($drinksArray as $drinkArray) {
-	 	foreach ($drinkArray as $key => $value) {
+
+	 $drinksArray = array_column($drinksArray, 'name');
+	
+
+
+	 $array_count=array_count_values($drinksArray);
+
+foreach($array_count  as $key => $value){
+
+ if($value=='2' OR $value=='4' ){
+     foreach (array_keys($drinksArray, $key, true) as $unsetKey) {
+     unset($drinksArray[$unsetKey]);
+        }
+      }
+   }
+
+ print_r($drinksArray);
+	 	foreach ($drinksArray as $key => $value) {
 	 		// print_r($value);
 	 		// echo "\n";
 	 	$sql= "SELECT * from `ingredient` WHERE ingredient_name='$value';";
@@ -26,9 +41,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 				$id= $row['ingredient_id'];
 			}
-			
-			print_r($id);
-			echo "\n";
+	
 		
 		 $sql2="SELECT * FROM  `can_be_made` WHERE ingredient_id='$id';";
 		 $result2=mysqli_query($con,$sql2);
@@ -47,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 	}
 	 	}
 	 	# code...
-	 }
+	 
 	sort($arringredient);
 	print_r($arringredient);
 	$dups = array();
@@ -63,30 +76,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 	 	$sql3= "INSERT into `display` SELECT * from `recipe` WHERE recipe_id='$dups[$i]'&& category='Breakfast';";//&& category='Drinks'
 		$result3=mysqli_query($con,$sql3);
 		$resultCheck3= mysqli_num_rows($result3);
-		// if($resultCheck3>0)
-		// {
-		// 	while($row=mysqli_fetch_assoc($result3)){  //fetch_assoc fetches the data in an arrAY SO HERE ROW IS AN ARRAY
-  //               $col1= $row['recipe_name','category','ingredients','instructions','picture_link'];
-  //               // $col2= $row['category'];
-  //               // $col3= $row['ingredients'];
-  //               // $col4= $row['instructions'];
-  //               // $col5= $row['picture_link'];
-
-            
-  //               array_push($arringredientname, $col1);
-  //               // array_push($arringredientname, $col2);
-  //               // array_push($arringredientname, $col3);
-  //               // array_push($arringredientname, $col4);
-  //               // array_push($arringredientname, $col5);
-
-
-				
-		// 	}
-		// }
+		
 		}
-		//print_r($arringredientname);
-		echo "hey";
- 	
+		
 	
 
 }
