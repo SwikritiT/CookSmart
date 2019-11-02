@@ -35,6 +35,8 @@ public class Profile extends AppCompatActivity {
     SharedPreferences prf;
     Intent intent;
     TextView user_name, fullname_textview, email_textview, phone_textview;
+    public static String fn,em,pn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,13 @@ public class Profile extends AppCompatActivity {
 
         if(FULLNAME=="default")
         {loadProfile();}
+
+        else if(FULLNAME=="")
+        {
+            fullname_textview.setText(fn);
+            email_textview.setText(em);
+            phone_textview.setText(pn);
+        }
         else
         {
             fullname_textview.setText(prf.getString("fullname", "default value"));
@@ -97,11 +106,11 @@ public class Profile extends AppCompatActivity {
 
 
                             JSONObject details = jsonArray.getJSONObject(i);
-                            String name = details.getString("username");
+                               String name = details.getString("username");
 
-                            String fn = details.getString("fullname");
-                            String em = details.getString("email");
-                            String pn = details.getString("phonenumber");
+                            fn = details.getString("fullname");
+                             em = details.getString("email");
+                             pn = details.getString("phonenumber");
 
 
                             fullname_textview.setText(fn);

@@ -9,12 +9,24 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 	$inputDrinksList=$_POST['ingredients_array'];
 
 	 $drinksArray=json_decode($inputDrinksList,true);
-	 //array_unique($inputDrinksList);
+	
 	 $arringredient=array();
 	 $arringredientname=array();
-	 print_r($drinksArray);
-	 foreach ($drinksArray as $drinkArray) {
-	 	foreach ($drinkArray as $key => $value) {
+	  $drinksArray = array_column($drinksArray, 'name');
+	 $array_count=array_count_values($drinksArray);
+
+foreach($array_count  as $key => $value){
+
+ if($value=='2' OR $value=='4' ){
+     foreach (array_keys($drinksArray, $key, true) as $unsetKey) {
+     unset($drinksArray[$unsetKey]);
+        }
+      }
+   }
+
+ print_r($drinksArray);
+	
+	 	foreach ($drinksArray as $key => $value) {
 	 		// print_r($value);
 	 		// echo "\n";
 	 	$sql= "SELECT * from `ingredient` WHERE ingredient_name='$value';";
@@ -45,7 +57,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 			
 		}
 	}
-	 	}
+	 	
 	 	# code...
 	 }
 	sort($arringredient);

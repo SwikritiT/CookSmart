@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -114,6 +115,7 @@ public class SignUp extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("flag");
+                            Log.d("response=",success);
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")) {
                                 SharedPreferences.Editor editor = pref.edit();
@@ -122,7 +124,7 @@ public class SignUp extends AppCompatActivity {
                                 editor.putString("email",email);
                                 editor.putString("fullname",fullname);
                                 editor.putString("phonenumber",phonenumber);
-                                editor.commit();
+                                editor.apply();
                                 Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SignUp.this, HomePage.class);
                                 startActivity(intent);
