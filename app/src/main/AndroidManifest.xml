@@ -3,7 +3,8 @@
     package="ellere.cooksmart">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -18,70 +19,110 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
-        <activity android:name=".HomePage">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".HomePage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            >
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
 
         </activity>
-        <activity android:name=".Breakfast">
+        <activity android:name=".Breakfast"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
 
             <!--<category android:name="android.intent.category.LAUNCHER" />-->
         <!--</intent-filter>-->
         </activity>
-        <activity android:name=".Snacks" />
-        <activity android:name=".Dinner" />
-        <activity android:name=".Curry" />
-        <activity android:name=".Dessert" />
-        <activity android:name=".Drinks" >
+        <activity android:name=".Snacks"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Dinner"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Curry"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Dessert"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Drinks"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".SignUp" />
-        <activity android:name=".FirstPage">
+        <activity android:name=".SignUp"
+            android:noHistory="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FirstPage"
+            android:launchMode="singleTask"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login"
+            android:noHistory="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".Login">
+        <activity android:name=".Breakfast_homepage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".Breakfast_homepage">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
 
         </activity>
-        <activity android:name=".Curry_homepage">
+        <activity android:name=".Curry_homepage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Drinks_homepage">
+        <activity android:name=".Drinks_homepage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Snacks_homepage">
+        <activity android:name=".Snacks_homepage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Dessert_homepage">
+        <activity android:name=".Dessert_homepage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Dinner_homepage">
+        <activity android:name=".Dinner_homepage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".Profile"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
 
 
     </application>

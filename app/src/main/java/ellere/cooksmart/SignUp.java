@@ -1,8 +1,10 @@
 package ellere.cooksmart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,12 +31,14 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 
 public class SignUp extends AppCompatActivity {
     Button signupbtn;
-    EditText user, pass, confirmpass;
-    String username,password,confirmpassword;
+    EditText user, pass, confirmpass,fullname_edittext,email_edittext,phonenumber_edittext;
+    String username,password,confirmpassword, email,fullname,phonenumber;
     String reg_url = BASE_URL+"signup.php";
     private Pattern pattern;
     private Matcher matcher;
     private static final String USERNAME_PATTERN = ".*[&%$#@!~]+.*";
+    SharedPreferences pref;
+    Intent intent;
 
 
     @Override
@@ -45,14 +49,25 @@ public class SignUp extends AppCompatActivity {
         user = (EditText) findViewById(R.id.username_signup);
         pass = (EditText) findViewById(R.id.password_signup);
         confirmpass = (EditText) findViewById(R.id.confirmpassword_signup);
+        fullname_edittext=(EditText)findViewById(R.id.fullname);
+        email_edittext=(EditText)findViewById(R.id.email);
+        phonenumber_edittext=(EditText)findViewById(R.id.phonenumber);
         pattern = Pattern.compile(USERNAME_PATTERN);
+        pref = getSharedPreferences("user_details",MODE_PRIVATE);
+        intent = new Intent(SignUp.this,HomePage.class);
+        if(pref.contains("username") && pref.contains("password")){
+            startActivity(intent);
+        }
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                  username = user.getText().toString().trim();
                 password = pass.getText().toString().trim();
+                email=email_edittext.getText().toString().trim();
+                fullname=fullname_edittext.getText().toString().trim();
+                phonenumber=phonenumber_edittext.getText().toString().trim();
                 confirmpassword = confirmpass.getText().toString().trim();
-                if (username.equals("") || password.equals("") || confirmpassword.equals("")) {
+                if (username.equals("") || password.equals("") || confirmpassword.equals("") || fullname.equals("")|| email.equals("") || phonenumber.equals("")) {
                     Toast.makeText(SignUp.this, "Fill up the field properly", Toast.LENGTH_SHORT).show();
 
                 } else if (password.length() < 8) {
@@ -69,7 +84,7 @@ public class SignUp extends AppCompatActivity {
                 }
 //                 If EditText is not empty and CheckEditText = True then this block will execute.
                 else {
-                    UserRegisterFunction(username,password);
+                    UserRegisterFunction(username,password,fullname,email,phonenumber);
 
 
                 }
@@ -79,7 +94,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    public void UserRegisterFunction(final String username, final String password) {
+    public void UserRegisterFunction(final String username, final String password,final String fullname, final String email,final String phonenumber) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, reg_url,
                 new Response.Listener<String>() {
                     @Override
@@ -88,8 +103,16 @@ public class SignUp extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("flag");
+                            Log.d("response=",success);
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")) {
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("username",username);
+                                editor.putString("password",password);
+                                editor.putString("email",email);
+                                editor.putString("fullname",fullname);
+                                editor.putString("phonenumber",phonenumber);
+                                editor.apply();
                                 Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SignUp.this, HomePage.class);
                                 startActivity(intent);
@@ -117,6 +140,9 @@ public class SignUp extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username);
                 params.put("password", password);
+                params.put("fullname",fullname);
+                params.put("email",email);
+                params.put("phonenumber",phonenumber);
 
                 return params;
             }

@@ -1,7 +1,10 @@
 package ellere.cooksmart;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -75,24 +78,58 @@ public class Snacks_homepage extends AppCompatActivity {
                         progressDialog.dismiss();
                         try {
                             final String result = response.toString();
-                            int i =0;
-                            Log.d("response","result1: " +result);
-                            JSONObject jsonObject=new JSONObject(response);
-                            JSONArray jsonArray=jsonObject.getJSONArray("response_list");
-                            while(i<jsonArray.length()) {
+                            if(result.equals("")){
+                                //Toast.makeText(Breakfast_homepage.this, "No recipe found.Please select other ingredients.", Toast.LENGTH_SHORT).show();
+                                //openDialog();
 
-                                //getting product object from json array
-                                JSONObject recipes = jsonArray.getJSONObject(i);
-                                String name=recipes.getString("name");
-                                String image_path=recipes.getString("link");
-                                String ingredients=recipes.getString("ingredient");
-                                String instructions=recipes.getString("instruction");
+                                AlertDialog.Builder builder1 = new AlertDialog.Builder(Snacks_homepage.this);
+                                builder1.setMessage("Sorry, no recipe found. Please select other ingredients.");
+                                builder1.setCancelable(true);
 
-                                //adding the product to product list
-                                RecipeModel recipeModel=new RecipeModel(image_path,name,ingredients,instructions);
-                                recipeModelList.add(new RecipeModel(image_path,name,ingredients,instructions));
-                                i++;
+                                builder1.setPositiveButton(
+                                        "Okay",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                                Intent intent=new Intent(Snacks_homepage.this,Snacks.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
+                                            }
 
+                                        });
+
+                                builder1.setNegativeButton(
+                                        "Cancle",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+
+                                AlertDialog alert11 = builder1.create();
+                                alert11.show();
+
+                            }
+                            else {
+                                int i = 0;
+                                Log.d("response", "result1: " + result);
+                                JSONObject jsonObject = new JSONObject(response);
+                                JSONArray jsonArray = jsonObject.getJSONArray("response_list");
+                                while (i < jsonArray.length()) {
+
+                                    //getting product object from json array
+                                    JSONObject recipes = jsonArray.getJSONObject(i);
+                                    String name = recipes.getString("name");
+                                    String image_path = recipes.getString("link");
+                                    String ingredients = recipes.getString("ingredient");
+                                    String instructions = recipes.getString("instruction");
+
+                                    //adding the product to product list
+                                    RecipeModel recipeModel = new RecipeModel(image_path, name, ingredients, instructions);
+                                    recipeModelList.add(new RecipeModel(image_path, name, ingredients, instructions));
+                                    i++;
+
+                                }
                             }
                             recyclerView = (RecyclerView) findViewById(R.id.recipes_recycler_view);
                             LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

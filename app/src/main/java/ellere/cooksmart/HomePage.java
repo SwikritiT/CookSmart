@@ -40,9 +40,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     private CategoriesAdapter categoriesAdapter;
     private List<CategoriesModel> categoriesModelList;
     private Context context;
-   // SessionManager sessionManager;
+    SharedPreferences prf;
+    Intent intent;
 
-   //private static final String EXTRA__ITEM = "image_url";
+    //private static final String EXTRA__ITEM = "image_url";
 //    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME = "image_transition_name";
 //    private static final String EXTRA_ANIMAL_IMAGE_TRANSITION_NAME2 = "image_transition_name2";
 //    private static final String EXTRA__ITEM_NAME = "name";
@@ -52,13 +53,9 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-//        sessionManager=new SessionManager(this);
-//        sessionManager.checkLogin();
-     //   HashMap<String,String> user=sessionManager.getUserDetail();
-//        String name=user.get(sessionManager.NAME);
-//        String pass=user.get(sessionManager.PASSWORD);
-
         toolbar=(Toolbar) findViewById(R.id.toolbar);
+        prf = getSharedPreferences("user_details",MODE_PRIVATE);
+        intent = new Intent(HomePage.this,Login.class);
         //setSupportActionBar(toolbar);
 
 
@@ -70,15 +67,20 @@ public class HomePage extends AppCompatActivity implements ClickListener {
                 String title = (String) item.getTitle();
                 switch (item.getItemId()) {
                     case R.id.profile:
-                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+
+                        Intent intent= new Intent(HomePage.this,Profile.class);
+                        startActivity(intent);
+
                     case R.id.help:
                         Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.setting:
-                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
-                    case R.id.logout:
-                       // sessionManager.logout();
-                        return true;
+//                    case R.id.setting:
+//                        Toast.makeText(HomePage.this, title + " selected!", Toast.LENGTH_SHORT).show();
+
+//                    case R.id.logout:
+//                        logout();
+
+
                     default:
                         return onMenuItemClick(item);
                 }
@@ -140,7 +142,12 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             }
         });
     }
-
+//    public  void logout(){
+//        SharedPreferences.Editor editor = prf.edit();
+//        editor.clear();
+//        editor.commit();
+//        startActivity(intent);
+//    }
     private void prepareCategories(){
         int[] covers= new int[]{
                 R.drawable.breakfast,
@@ -167,66 +174,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     }
 
 
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    @Override
-//    public void itemClicked(int position, ImageView imageView, TextView textView) {
-//        if(position==0){
-//            Intent intent = new Intent(HomePage.this, Breakfast.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-////            intent.putExtra(EXTRA__ITEM,imageItem);
-////            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-////                intent.putExtra("BreakfastTransitionName", ViewCompat.getTransitionName(shareImageView));
-//////            Pair<View, String> mPair1 = new Pair<View, String>(shareImageView, ViewCompat.getTransitionName(shareImageView));
-//////            Pair<View, String> mPair2 = new Pair<View, String>(shareTextView, ViewCompat.getTransitionName(shareTextView));
-//////            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,mPair1,mPair2);
-////
-////
-////                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-////                        this,
-////                        shareImageView,
-////                        ViewCompat.getTransitionName(shareImageView));
-////                startActivity(intent, options.toBundle());
-////            }
-//
-//
-//
-//
-//
-//
-//
-//
-//        }
-//        if(position==1){
-//            Intent intent = new Intent(HomePage.this, Snacks.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==2){
-//            Intent intent = new Intent(HomePage.this, Dinner.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==3){
-//            Intent intent = new Intent(HomePage.this, Curry.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==4){
-//            Intent intent = new Intent(HomePage.this, Dessert.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//        if(position==5){
-//            Intent intent = new Intent(HomePage.this, Drinks.class);
-//            intent.putExtra("ItemPosition", position);
-//            startActivity(intent);
-//        }
-//
-//    }
 
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    @Override
     public void itemClicked(View view, int position) {
         if(position==0){
             Intent intent = new Intent(HomePage.this, Breakfast.class);
@@ -234,10 +182,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -249,10 +197,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("ItemPosition", position);
             intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -265,10 +213,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -280,10 +228,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("ItemPosition", position);
             intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -295,10 +243,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("ItemPosition", position);
             intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -311,10 +259,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("Categories name transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -324,7 +272,7 @@ public class HomePage extends AppCompatActivity implements ClickListener {
 
 
     }
-//
+    //
     @Override
     public void thumbnailClicked(View view, int position) {
         if(position==0){
@@ -332,25 +280,25 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("ItemPosition", position);
             intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
             }
-           else startActivity(intent);
+            else startActivity(intent);
         }
         if(position==1){
             Intent intent = new Intent(HomePage.this, Snacks.class);
             intent.putExtra("ItemPosition", position);
             intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -363,10 +311,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -379,10 +327,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -394,10 +342,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("ItemPosition", position);
             intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -409,10 +357,10 @@ public class HomePage extends AppCompatActivity implements ClickListener {
             intent.putExtra("ItemPosition", position);
             intent.putExtra("Categories image transition name", ViewCompat.getTransitionName(view));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    view,
-                    ViewCompat.getTransitionName(view));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        view,
+                        ViewCompat.getTransitionName(view));
 
 
                 startActivity(intent, options.toBundle());
@@ -469,6 +417,5 @@ public class HomePage extends AppCompatActivity implements ClickListener {
     }
 
 
-    }
-
+}
 

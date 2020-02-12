@@ -9,14 +9,10 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 	$inputDrinksList=$_POST['ingredients_array'];
 
 	 $drinksArray=json_decode($inputDrinksList,true);
-	 
+	 //array_unique($inputDrinksList);
 	 $arringredient=array();
 	 $arringredientname=array();
-
-	 $drinksArray = array_column($drinksArray, 'name');
-	
-
-
+	  $drinksArray = array_column($drinksArray, 'name');
 	 $array_count=array_count_values($drinksArray);
 
 foreach($array_count  as $key => $value){
@@ -29,6 +25,7 @@ foreach($array_count  as $key => $value){
    }
 
  print_r($drinksArray);
+	
 	 	foreach ($drinksArray as $key => $value) {
 	 		// print_r($value);
 	 		// echo "\n";
@@ -41,7 +38,9 @@ foreach($array_count  as $key => $value){
 
 				$id= $row['ingredient_id'];
 			}
-	
+			
+			print_r($id);
+			echo "\n";
 		
 		 $sql2="SELECT * FROM  `can_be_made` WHERE ingredient_id='$id';";
 		 $result2=mysqli_query($con,$sql2);
@@ -57,10 +56,10 @@ foreach($array_count  as $key => $value){
 			//echo "\n";
 			
 		}
-	}
+	
 	 	}
 	 	# code...
-	 
+	 }
 	sort($arringredient);
 	print_r($arringredient);
 	$dups = array();
@@ -73,7 +72,7 @@ foreach($array_count  as $key => $value){
 	  for($i=0;$i<count($dups);$i++)
 	 	{
 	 	
-	 	$sql3= "INSERT into `display` SELECT * from `recipe` WHERE recipe_id='$dups[$i]'&& category='Breakfast';";//&& category='Drinks'
+	 	$sql3= "INSERT into `display` SELECT * from `recipe` WHERE recipe_id='$dups[$i]'&& category='drinks.php';";//&& category='Drinks'
 		$result3=mysqli_query($con,$sql3);
 		$resultCheck3= mysqli_num_rows($result3);
 		

@@ -32,8 +32,16 @@ import static ellere.cooksmart.API_creator.BASE_URL;
 public class Login extends AppCompatActivity {
     Button loginbtn, gosignupbtn;
     EditText user, pass;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String UserName = "nameKey";
+    public static final String Password = "passKey";
+    public static final String Email = "emailKey";
+    int PRIVATE_MODE = 0;
+    // SessionManager sessionManager;
+
+    SharedPreferences pref;
+    Intent intent;
     String reg_url = BASE_URL+"login.php";
-    //SessionManager sessionManager;
 
 
     @Override
@@ -44,29 +52,32 @@ public class Login extends AppCompatActivity {
         loginbtn=(Button) findViewById(R.id.login_btn);
         user=(EditText) findViewById(R.id.username_login);
         pass=(EditText) findViewById(R.id.password_login);
-       // sessionManager=new SessionManager(this);
 
+        pref = getSharedPreferences("user_details",MODE_PRIVATE);
+        intent = new Intent(Login.this,HomePage.class);
+        if(pref.contains("username") && pref.contains("password")){
+            startActivity(intent);
+        }
         loginbtn.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View view) {
-                                          String username = user.getText().toString();
-                                          String password = pass.getText().toString();
-                                          //sessionManager.createSession(username,password);
+                                        @Override
+                                        public void onClick(View view) {
+                                            String username = user.getText().toString();
+                                            String password = pass.getText().toString();
 
 
 
-                                          if (username.equals("") || password.equals("")) {
-                                              Toast.makeText(getBaseContext(), "Fill up all the field properly", Toast.LENGTH_SHORT).show();
-                                              return;
-                                          }
-                                          else
-                                          {
+                                            if (username.equals("") || password.equals("")) {
+                                                Toast.makeText(getBaseContext(), "Fill up all the field properly", Toast.LENGTH_SHORT).show();
+                                                return;
+                                            }
+                                            else
+                                            {
 
-                                              UserLoginFunction(username, password);
-                                          }
+                                                UserLoginFunction(username, password);
+                                            }
 
-                                      }
-                                  }
+                                        }
+                                    }
         );
 
         gosignupbtn.setOnClickListener(new View.OnClickListener() {
@@ -89,21 +100,20 @@ public class Login extends AppCompatActivity {
                             String success =jsonObject.getString("flag");
 //                            JSONObject myObj=new JSONObject(success);
                             if (success.equals("1")){
-//
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("username",username);
+                                editor.putString("password",password);
+                                editor.apply();
+                                Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
 
 
-
-                                    //Log.d("test",">>>>1"+textView1.getText());
-                                    Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-
-                                    //if(pref.contains("username")&& pref.contains("password"))
 
 
 
                                 Intent intent = new Intent(Login.this, HomePage.class);
 
-                                    startActivity(intent);
-                                }
+                                startActivity(intent);
+                            }
 
                             else
                             {
